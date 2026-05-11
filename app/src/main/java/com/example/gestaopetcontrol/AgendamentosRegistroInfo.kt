@@ -6,16 +6,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.gestaopetcontrol.databinding.ActivityMainBinding
+import com.example.gestaopetcontrol.databinding.ActivityAgendamentosRegistroInfoBinding
+import com.example.gestaopetcontrol.databinding.ActivityClientesRegistroInfoBinding
 
-class MainActivity : AppCompatActivity() {
+class AgendamentosRegistroInfo : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityAgendamentosRegistroInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityAgendamentosRegistroInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -23,13 +24,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnClientes.setOnClickListener {
-            intent = Intent(this, Clientes::class.java)
-            startActivity(intent)
-        }
+        // Precisa do Cliente colocar o nome do cliente primeiro
+        binding.edtPetCliente.isEnabled = false
 
-        binding.btnAgendamentos.setOnClickListener {
-            intent = Intent(this, Agendamentos::class.java)
+        binding.btnContinuarAgendamento.setOnClickListener {
+            intent = Intent(this, AgendamentoRegistroServicos::class.java)
             startActivity(intent)
         }
 

@@ -12,6 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GestaoPetControl">
         <activity
+            android:name=".AgendamentoRegistroServicos"
+            android:exported="false" />
+        <activity
+            android:name=".AgendamentosRegistroInfo"
+            android:exported="false" />
+        <activity
+            android:name=".ClienteRegistroPets"
+            android:exported="false" />
+        <activity
+            android:name=".ClientesRegistroPets"
+            android:exported="false"
+            android:theme="@style/Theme.GestaoPetControl" />
+        <activity
+            android:name=".ClientesRegistroInfo"
+            android:exported="false" />
+        <activity
+            android:name=".Clientes"
+            android:exported="false" />
+        <activity
+            android:name=".Agendamentos"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

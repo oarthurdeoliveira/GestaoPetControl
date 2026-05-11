@@ -6,16 +6,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.gestaopetcontrol.databinding.ActivityMainBinding
+import com.example.gestaopetcontrol.databinding.ActivityClientesRegistroInfoBinding
 
-class MainActivity : AppCompatActivity() {
+class ClientesRegistroInfo : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityClientesRegistroInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityClientesRegistroInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -23,15 +23,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnClientes.setOnClickListener {
-            intent = Intent(this, Clientes::class.java)
+        binding.btnContinuar.setOnClickListener {
+            intent = Intent(this, ClienteRegistroPets::class.java)
             startActivity(intent)
         }
-
-        binding.btnAgendamentos.setOnClickListener {
-            intent = Intent(this, Agendamentos::class.java)
-            startActivity(intent)
-        }
-
     }
 }
