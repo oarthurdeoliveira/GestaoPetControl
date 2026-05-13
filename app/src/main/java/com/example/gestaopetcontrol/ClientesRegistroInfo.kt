@@ -22,10 +22,5 @@ class ClientesRegistroInfo : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        binding.btnContinuar.setOnClickListener {
-            intent = Intent(this, ClienteRegistroPets::class.java)
-            startActivity(intent)
-        }
     }
 }

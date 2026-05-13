@@ -25,6 +25,14 @@ class Clientes : AppCompatActivity() {
         }
 
 
+
+        binding.btnRegistro.setOnClickListener {
+            intent = Intent(this, ClientesRegistroInfo::class.java)
+            startActivity(intent)
+        }
+
+        // Navegação
+
         binding.btnAgendamentos.setOnClickListener {
             intent = Intent(this, Agendamentos::class.java)
             startActivity(intent)
@@ -34,9 +42,8 @@ class Clientes : AppCompatActivity() {
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
-        binding.btnRegistro.setOnClickListener {
-            intent = Intent(this, ClientesRegistroInfo::class.java)
+        binding.btnPets.setOnClickListener {
+            intent = Intent(this, Pets::class.java)
             startActivity(intent)
         }
 

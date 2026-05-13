@@ -31,64 +31,197 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtv_titulo" />
 
-    <EditText
-        android:id="@+id/edt_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:ems="10"
-        android:hint="Nome"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/edt_cpf"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_cpf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:ems="10"
-        android:hint="CPF"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/edt_telefone"
+    <ScrollView
+        android:layout_width="407dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="150dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/edt_telefone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:ems="10"
-        android:hint="Numero telefone"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/edt_cep"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edt_cep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="292dp"
-        android:ems="10"
-        android:hint="CEP"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+            <LinearLayout
+                android:id="@+id/info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_Continuar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="Continuar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+                <EditText
+                    android:id="@+id/edt_cpf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="CPF"
+                    android:inputType="text" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/edt_nome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Nome"
+                    android:inputType="text" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/edt_telefone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Numero telefone"
+                    android:inputType="text"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/layout_endereco"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edt_endereco"
+                    android:layout_width="147dp"
+                    android:layout_height="44dp"
+                    android:ems="10"
+                    android:hint="Endereço"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/edn_numero"
+                    android:layout_width="144dp"
+                    android:layout_height="45dp"
+                    android:ems="10"
+                    android:hint="Numero"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/layout_extra"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edt_complemento"
+                    android:layout_width="146dp"
+                    android:layout_height="49dp"
+                    android:ems="10"
+                    android:hint="Complemento"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/edt_referencia"
+                    android:layout_width="146dp"
+                    android:layout_height="49dp"
+                    android:ems="10"
+                    android:hint="Referencia"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/layout_cidade"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edt_cidade"
+                    android:layout_width="145dp"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:hint="Cidade"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/edt_bairro"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:hint="Bairro"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/layout_estado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edt_Estado"
+                    android:layout_width="146dp"
+                    android:layout_height="44dp"
+                    android:ems="10"
+                    android:hint="Estado"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider7"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btn_Continuar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continuar" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

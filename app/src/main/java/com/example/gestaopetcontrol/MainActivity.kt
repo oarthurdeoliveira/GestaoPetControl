@@ -33,5 +33,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnPets.setOnClickListener {
+            intent = Intent(this, Pets::class.java)
+            startActivity(intent)
+        }
+
     }
 }

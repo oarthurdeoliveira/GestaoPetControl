@@ -6,16 +6,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.gestaopetcontrol.databinding.ActivityClienteRegistroPetsBinding
+import com.example.gestaopetcontrol.databinding.ActivityPetsBinding
 
-class ClienteRegistroPets : AppCompatActivity() {
+class Pets : AppCompatActivity() {
 
-    private lateinit var binding: ActivityClienteRegistroPetsBinding
+    private lateinit var binding: ActivityPetsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityClienteRegistroPetsBinding.inflate(layoutInflater)
+        binding = ActivityPetsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -23,11 +23,29 @@ class ClienteRegistroPets : AppCompatActivity() {
             insets
         }
 
+        binding.btnRegistrarPets.setOnClickListener {
+            intent = Intent(this, PetsRegistro::class.java)
+            startActivity(intent)
+        }
 
-        binding.btnFinalizar.setOnClickListener {
+
+        //Navegação
+
+        binding.btnClientes.setOnClickListener {
             intent = Intent(this, Clientes::class.java)
             startActivity(intent)
         }
 
+        binding.btnCasa.setOnClickListener {
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnAgendamentos.setOnClickListener {
+            intent = Intent(this, Agendamentos::class.java)
+            startActivity(intent)
+        }
+
     }
+
 }

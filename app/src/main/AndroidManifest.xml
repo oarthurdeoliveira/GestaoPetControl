@@ -12,18 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GestaoPetControl">
         <activity
-            android:name=".AgendamentoRegistroServicos"
+            android:name=".PetsRegistro"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
-            android:name=".AgendamentosRegistroInfo"
+            android:name=".Pets"
             android:exported="false" />
         <activity
-            android:name=".ClienteRegistroPets"
+            android:name=".AgendamentoRegistro"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
-        <activity
-            android:name=".ClientesRegistroPets"
-            android:exported="false"
-            android:theme="@style/Theme.GestaoPetControl" />
         <activity
             android:name=".ClientesRegistroInfo"
             android:exported="false" />

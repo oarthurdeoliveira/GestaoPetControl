@@ -6,16 +6,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.gestaopetcontrol.databinding.ActivityAgendamentoRegistroServicosBinding
+import com.example.gestaopetcontrol.databinding.ActivityPetsRegistroBinding
 
-class AgendamentoRegistroServicos : AppCompatActivity() {
+class PetsRegistro : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAgendamentoRegistroServicosBinding
+    private lateinit var binding: ActivityPetsRegistroBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityAgendamentoRegistroServicosBinding.inflate(layoutInflater)
+        binding = ActivityPetsRegistroBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -24,10 +24,11 @@ class AgendamentoRegistroServicos : AppCompatActivity() {
         }
 
 
-        binding.btnFinalizarAgendamento.setOnClickListener {
-            intent = Intent(this, Agendamentos::class.java)
+
+        binding.btnSalvarPet.setOnClickListener {
+            intent = Intent(this, Pets::class.java)
             startActivity(intent)
         }
-
     }
+
 }

@@ -23,6 +23,15 @@ class Agendamentos : AppCompatActivity() {
             insets
         }
 
+
+        binding.btnRegistroAgendamento.setOnClickListener {
+            intent = Intent(this, AgendamentoRegistro::class.java)
+            startActivity(intent)
+        }
+
+
+        //Navegação
+
         binding.btnClientes.setOnClickListener {
             intent = Intent(this, Clientes::class.java)
             startActivity(intent)
@@ -34,7 +43,12 @@ class Agendamentos : AppCompatActivity() {
         }
 
         binding.btnRegistroAgendamento.setOnClickListener {
-            intent = Intent(this, AgendamentosRegistroInfo::class.java)
+            intent = Intent(this, AgendamentoRegistro::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnPets.setOnClickListener {
+            intent = Intent(this, Pets::class.java)
             startActivity(intent)
         }
 
