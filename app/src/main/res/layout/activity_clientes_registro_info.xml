@@ -216,10 +216,10 @@
                 android:visibility="visible" />
 
             <Button
-                android:id="@+id/btn_Continuar"
+                android:id="@+id/btn_finalizar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Continuar" />
+                android:text="Finalizar" />
 
         </LinearLayout>
     </ScrollView>

@@ -27,7 +27,7 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/txtv_subtitulo3"
+                android:id="@+id/txt_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -76,7 +76,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:editable="true"
                 android:ems="10"
+                android:focusableInTouchMode="false"
                 android:hint="Data"
                 android:inputType="date" />
 
@@ -86,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
+                android:focusableInTouchMode="false"
                 android:hint="Hora"
                 android:inputType="time" />
 

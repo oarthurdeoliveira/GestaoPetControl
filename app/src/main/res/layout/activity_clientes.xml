@@ -36,14 +36,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_lista"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="156dp" />
+                android:layout_height="463dp" />
 
             <Button
                 android:id="@+id/btn_Registro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
                 android:text="Novo registro" />
 
         </LinearLayout>

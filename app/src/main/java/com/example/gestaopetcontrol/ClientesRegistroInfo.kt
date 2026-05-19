@@ -2,15 +2,20 @@ package com.example.gestaopetcontrol
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.gestaopetcontrol.banco.Database
 import com.example.gestaopetcontrol.databinding.ActivityClientesRegistroInfoBinding
+import com.example.gestaopetcontrol.banco.inserirCliente
 
 class ClientesRegistroInfo : AppCompatActivity() {
 
     private lateinit var binding: ActivityClientesRegistroInfoBinding
+    private var idCliente: Int? = null
+    private lateinit var database: Database
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,5 +27,57 @@ class ClientesRegistroInfo : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+        binding.btnFinalizar.setOnClickListener {
+            cadastrarCliente()
+        }
+
+        database = Database(this)
+        idCliente = intent.getIntExtra("ID_CLIENTES", -1)
+        if (idCliente == -1) {
+            Toast.makeText(this, "Novo cliente", Toast.LENGTH_SHORT).show()
+        }else {
+            //Espaço para ler as informações banco de dados.
+        }
+
     }
+
+    fun cadastrarCliente(){
+        val nome = binding.edtNome.text.toString()
+        val cpf = binding.edtCpf.text.toString()
+        val telefone = binding.edtTelefone.text.toString()
+        val endereco = binding.edtEndereco.text.toString()
+        val numero_residencia = binding.ednNumero.text.toString().toInt()
+        val complemento = binding.edtComplemento.text.toString()
+        val referencia = binding.edtReferencia.text.toString()
+        val cidade = binding.edtCidade.text.toString()
+        val bairro = binding.edtBairro.text.toString()
+        val estado = binding.edtEstado.text.toString()
+
+        var cliente: ClientesData? = null
+
+        // !! garante pro compilador que a variavel não é nula
+        if(idCliente!! >= 0) {
+            // Quando estou alterando um existente
+            Toast.makeText(this, "Adicionando cliente: {$nome}", Toast.LENGTH_SHORT).show()
+            cliente = ClientesData(nome, cpf, telefone, endereco, numero_residencia, complemento, referencia, cidade, bairro, estado, 0, idCliente)
+            // Commando banco de dados
+        }else {
+            // Quando estou inserindo um novo
+            cliente = ClientesData(nome, cpf, telefone, endereco, numero_residencia, complemento, referencia, cidade, bairro, estado, 0)
+            val idclienteRetornardo = database.inserirCliente(cliente)
+            if(idclienteRetornardo == -1L) {
+                Toast.makeText(this, "Error ao inserir aluno", Toast.LENGTH_SHORT).show()
+            }else {
+                Toast.makeText(this, "{$nome} cadastrado com sucesso", Toast.LENGTH_SHORT).show()
+            }
+            finish()
+        }
+
+
+
+    }
+
+
 }
