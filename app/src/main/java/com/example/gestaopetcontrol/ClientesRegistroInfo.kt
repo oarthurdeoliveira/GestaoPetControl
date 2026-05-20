@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.gestaopetcontrol.banco.Database
+import com.example.gestaopetcontrol.banco.atualizarCliente
 import com.example.gestaopetcontrol.databinding.ActivityClientesRegistroInfoBinding
 import com.example.gestaopetcontrol.banco.inserirCliente
+import com.example.gestaopetcontrol.banco.pegaCliente
 
 class ClientesRegistroInfo : AppCompatActivity() {
 
@@ -38,14 +40,29 @@ class ClientesRegistroInfo : AppCompatActivity() {
         if (idCliente == -1) {
             Toast.makeText(this, "Novo cliente", Toast.LENGTH_SHORT).show()
         }else {
-            //Espaço para ler as informações banco de dados.
+            val cliente = database.pegaCliente(idCliente)
+            Toast.makeText(this, "{$cliente}", Toast.LENGTH_SHORT).show()
+            if (cliente != null) {
+                binding.edtNome.setText(cliente.nome)
+                binding.edtCpf.setText(cliente.cpf)
+                binding.edtTelefone.setText(cliente.telefone)
+                binding.edtEndereco.setText(cliente.endereço)
+                binding.ednNumero.setText(cliente.numero_residencia.toString())
+                binding.edtComplemento.setText(cliente.complemento)
+                binding.edtReferencia.setText(cliente.referencia)
+                binding.edtCidade.setText(cliente.bairro)
+                binding.edtEstado.setText(cliente.estado)
+
+                binding.btnFinalizar.text = "Alterar"
+                binding.btnFinalizar.isEnabled = true
+            }
         }
 
     }
 
     fun cadastrarCliente(){
-        val nome = binding.edtNome.text.toString()
-        val cpf = binding.edtCpf.text.toString()
+        val nome = binding.edtNome.text.toString().trim()
+        val cpf = binding.edtCpf.text.toString().trim()
         val telefone = binding.edtTelefone.text.toString()
         val endereco = binding.edtEndereco.text.toString()
         val numero_residencia = binding.ednNumero.text.toString().toInt()
@@ -62,7 +79,8 @@ class ClientesRegistroInfo : AppCompatActivity() {
             // Quando estou alterando um existente
             Toast.makeText(this, "Adicionando cliente: {$nome}", Toast.LENGTH_SHORT).show()
             cliente = ClientesData(nome, cpf, telefone, endereco, numero_residencia, complemento, referencia, cidade, bairro, estado, 0, idCliente)
-            // Commando banco de dados
+            val atualizado = database.atualizarCliente(cliente)
+            finish()
         }else {
             // Quando estou inserindo um novo
             cliente = ClientesData(nome, cpf, telefone, endereco, numero_residencia, complemento, referencia, cidade, bairro, estado, 0)
@@ -74,10 +92,5 @@ class ClientesRegistroInfo : AppCompatActivity() {
             }
             finish()
         }
-
-
-
     }
-
-
 }
