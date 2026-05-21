@@ -4,10 +4,24 @@ import android.R
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.widget.Toast
+import com.example.gestaopetcontrol.AgendamentoData
 import com.example.gestaopetcontrol.Clientes
 import com.example.gestaopetcontrol.ClientesData
 import com.example.gestaopetcontrol.PetData
 import com.example.gestaopetcontrol.Pets
+
+
+
+fun Database.inserirAgendamento(item: AgendamentoData): Long{
+    val idAgendamento = writableDatabase.insert("AGENDAMENTOS", null, ContentValues().apply {
+        put("DATA", item.data)
+        put("HORA", item.hora)
+        put("OBSERVACOES", item.observacao)
+        put("APAGADO", item.apagado)
+        put("ID_PET", item.idPet)
+    })
+    return idAgendamento
+}
 
 fun Database.inserirCliente(item: ClientesData): Long {
     val idcliente = writableDatabase.insert("CLIENTES", null, ContentValues().apply {
@@ -38,6 +52,42 @@ fun Database.inserirPet(item: PetData): Long {
         put("ID_CLIENTE", item.idCliente)
     })
     return idpet
+}
+
+@SuppressLint("Range")
+fun Database.selecionarAgendamentos(): List<AgendamentoData> {
+    val sql = """
+         SELECT AGENDAMENTOS.*, CLIENTES.NOME as NOME_DONO, CLIENTES.CPF as CPF_DONO, PETS.NOME as NOME_PET, PETS.RACA as RACA_PET, PETS.ESPECIE as ESPECIE_PET
+         FROM AGENDAMENTOS
+         INNER JOIN PETS ON AGENDAMENTOS.ID_PET = PETS.ID
+         INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID
+         WHERE (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) >= datetime('now', 'localtime')
+         ORDER BY (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) ASC
+    """.trimIndent()
+    val cursor = readableDatabase.rawQuery(sql, null)
+    val returnList = mutableListOf<AgendamentoData>()
+    if (cursor.count > 0) {
+        while(cursor.moveToNext()){
+            val agendamento = AgendamentoData(
+                data = cursor.getString(cursor.getColumnIndex("DATA")),
+                hora = cursor.getString(cursor.getColumnIndex("HORA")),
+                observacao = cursor.getString(cursor.getColumnIndex("OBSERVACOES")),
+                apagado = cursor.getInt(cursor.getColumnIndex("APAGADO")),
+                nome_pet = cursor.getString(cursor.getColumnIndex("NOME_PET")),
+                nome_dono = cursor.getString(cursor.getColumnIndex("NOME_DONO")),
+                cpf_dono = cursor.getString(cursor.getColumnIndex("CPF_DONO")),
+                raca_pet = cursor.getString(cursor.getColumnIndex("RACA_PET")),
+                especie_pet = cursor.getString(cursor.getColumnIndex("ESPECIE_PET")),
+                id = cursor.getInt(cursor.getColumnIndex("ID")),
+                idPet = cursor.getInt(cursor.getColumnIndex("ID_PET"))
+            )
+            returnList.add(agendamento)
+        }
+        cursor.close()
+
+    }
+    return returnList
+
 }
 
 @SuppressLint("Range")

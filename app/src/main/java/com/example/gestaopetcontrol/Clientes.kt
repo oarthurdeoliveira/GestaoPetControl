@@ -109,6 +109,7 @@ class Clientes : AppCompatActivity() {
     }
 
     private fun apagarCliente(idCliente: Int?) {
+        // TODO: SITUAÇÃO SE O DONO FOR DELETADO O QUE VAI ACONTECER COM OS PETS CADASTRADOS?
         val alerta = AlertDialog.Builder(this)
         alerta.setTitle("Apagar Cliente")
         alerta.setMessage("Deseja apagar cliente?")

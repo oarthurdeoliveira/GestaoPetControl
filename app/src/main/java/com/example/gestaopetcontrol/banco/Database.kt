@@ -40,10 +40,26 @@ class Database(context: Context): SQLiteOpenHelper(context, "banco.db", null, 1)
             );
         """.trimIndent()
 
+        var sql_agendamentos = """
+            CREATE TABLE AGENDAMENTOS(
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                DATA TEXT,
+                HORA TEXT,
+                OBSERVACOES TEXT,
+                APAGADO INTEGER DEFAULT 0,
+                ID_PET INTEGER,
+                FOREIGN KEY (ID_PET) REFERENCES PETS(ID)            
+            );
+
+            
+            
+        """.trimIndent()
+
 
 
         p0?.execSQL(sql_clientes)
         p0?.execSQL(sql_pets)
+        p0?.execSQL(sql_agendamentos)
 
     }
 
