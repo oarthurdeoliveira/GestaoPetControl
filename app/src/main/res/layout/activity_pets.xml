@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="-44dp">
 
         <TextView
             android:id="@+id/txtv_titulo6"
@@ -31,10 +31,35 @@
             android:text="Pets Cadastrados"
             android:textSize="20dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="423dp"
-            android:layout_gravity="center" >
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtCpfClientePets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="CPF"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btn_PesquisarClientePets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pesquisar Cliente" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_listaPets"
+            android:layout_width="match_parent"
+            android:layout_height="383dp"
+            android:layout_gravity="center">
 
         </androidx.recyclerview.widget.RecyclerView>
 

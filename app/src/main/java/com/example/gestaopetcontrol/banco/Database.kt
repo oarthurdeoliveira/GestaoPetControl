@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class Database(context: Context): SQLiteOpenHelper(context, "banco.db", null, 1) {
     override fun onCreate(p0: SQLiteDatabase?) {
-        var SQL = """
+        var sql_clientes = """
             CREATE TABLE CLIENTES(
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 NOME TEXT,
@@ -20,13 +20,31 @@ class Database(context: Context): SQLiteOpenHelper(context, "banco.db", null, 1)
                 BAIRRO TEXT,
                 ESTADO TEXT,
                 APAGADO INTEGER DEFAULT 0
-                
-            
             );
             
             
         """.trimIndent()
-        p0?.execSQL(SQL)
+        var sql_pets = """
+            CREATE TABLE PETS(
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                NOME TEXT,
+                ESPECIE TEXT,
+                RACA TEXT,
+                IDADE INTEGER,
+                PESO INTEGER,
+                ALERGIAS TEXT,
+                OBSERVACOES TEXT,
+                APAGADO INTEGER DEFAULT 0,
+                ID_CLIENTE INTEGER,
+                FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTES(ID)
+            );
+        """.trimIndent()
+
+
+
+        p0?.execSQL(sql_clientes)
+        p0?.execSQL(sql_pets)
+
     }
 
     override fun onUpgrade(

@@ -35,22 +35,47 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/edtCpfTutor"
+            <TextView
+                android:id="@+id/edtInvisbleIDCliente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:clickable="false"
-                android:ems="10"
-                android:hint="CPF Tutor"
-                android:inputType="number" />
+                android:text="TextView"
+                android:visibility="gone" />
 
-            <Spinner
-                android:id="@+id/spinnerClientes"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edtCpfTutor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clickable="false"
+                    android:ems="10"
+                    android:hint="CPF Tutor"
+                    android:inputType="number" />
+
+                <Button
+                    android:id="@+id/btnPesquisarClientePet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Pesquisar Tutor" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edtNomeClientePets"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Nome Cliente"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/edtNomePet"

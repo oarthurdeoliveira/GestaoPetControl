@@ -62,6 +62,8 @@ class Clientes : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //outro
+
         binding.btnPesquisarCliente.setOnClickListener {
             pesquisarcliente()
         }

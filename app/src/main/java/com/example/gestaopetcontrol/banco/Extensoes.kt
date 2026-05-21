@@ -6,6 +6,8 @@ import android.content.ContentValues
 import android.widget.Toast
 import com.example.gestaopetcontrol.Clientes
 import com.example.gestaopetcontrol.ClientesData
+import com.example.gestaopetcontrol.PetData
+import com.example.gestaopetcontrol.Pets
 
 fun Database.inserirCliente(item: ClientesData): Long {
     val idcliente = writableDatabase.insert("CLIENTES", null, ContentValues().apply {
@@ -23,6 +25,50 @@ fun Database.inserirCliente(item: ClientesData): Long {
     })
     return idcliente
 }
+
+fun Database.inserirPet(item: PetData): Long {
+    val idpet = writableDatabase.insert("PETS", null, ContentValues().apply {
+        put("NOME", item.nome)
+        put("ESPECIE", item.especie)
+        put("RACA", item.raca)
+        put("IDADE", item.idade)
+        put("PESO", item.peso)
+        put("ALERGIAS", item.alergias)
+        put("OBSERVACOES", item.observacoes)
+        put("ID_CLIENTE", item.idCliente)
+    })
+    return idpet
+}
+
+@SuppressLint("Range")
+fun Database.selecionarPets(sql: String): List<PetData> {
+    val cursor = readableDatabase.rawQuery(sql, null)
+    val returnList = mutableListOf<PetData>()
+    if (cursor.count > 0){
+        while (cursor.moveToNext()){
+            val pet = PetData(
+                nome = cursor.getString(cursor.getColumnIndex("NOME")),
+                especie = cursor.getString(cursor.getColumnIndex("ESPECIE")),
+                raca = cursor.getString(cursor.getColumnIndex("RACA")),
+                idade = cursor.getInt(cursor.getColumnIndex("IDADE")),
+                peso = cursor.getInt(cursor.getColumnIndex("PESO")),
+                alergias = cursor.getString(cursor.getColumnIndex("ALERGIAS")),
+                observacoes = cursor.getString(cursor.getColumnIndex("OBSERVACOES")),
+                apagado = cursor.getInt(cursor.getColumnIndex("APAGADO")),
+                idCliente = cursor.getInt(cursor.getColumnIndex("ID_CLIENTE")),
+                nome_cliente = cursor.getString(cursor.getColumnIndex("CLIENTE_NOME")),
+                cpf_cliente = cursor.getString(cursor.getColumnIndex("CLIENTE_CPF")),
+                id = cursor.getInt(cursor.getColumnIndex("ID"))
+
+            )
+            returnList.add(pet)
+        }
+        cursor.close()
+    }
+
+    return returnList
+}
+
 
 
 @SuppressLint("Range")
@@ -46,8 +92,8 @@ fun Database.selecionarClientes(sql: String): List<ClientesData> {
                 estado = cursor.getString(cursor.getColumnIndex("ESTADO")),
                 apagado = cursor.getInt(cursor.getColumnIndex("APAGADO")),
                 id = cursor.getInt(cursor.getColumnIndex("ID"))
-
             )
+
             returnList.add(cliente)
         }
         cursor.close()
@@ -55,6 +101,68 @@ fun Database.selecionarClientes(sql: String): List<ClientesData> {
     return returnList
 }
 
+
+@SuppressLint("Range")
+fun Database.pegaClienteCPF(CPF: String): ClientesData? {
+    val sql = "SELECT * FROM CLIENTES WHERE CPF = '${CPF}' AND APAGADO = 0"
+    val cursor = readableDatabase.rawQuery(sql, null)
+    var clienteEncontrado: ClientesData? = null
+
+    if (cursor.moveToFirst()){
+        val nome = cursor.getString(cursor.getColumnIndex("NOME"))
+        val cpf = cursor.getString(cursor.getColumnIndex("CPF"))
+        val telefone = cursor.getString(cursor.getColumnIndex("TELEFONE"))
+        val endereço = cursor.getString(cursor.getColumnIndex("ENDERECO"))
+        val numero_residencia = cursor.getInt(cursor.getColumnIndex("NUMERO_RESIDENCIA"))
+        val complemento = cursor.getString(cursor.getColumnIndex("COMPLEMENTO"))
+        val referencia = cursor.getString(cursor.getColumnIndex("REFERENCIA"))
+        val cidade = cursor.getString(cursor.getColumnIndex("CIDADE"))
+        val bairro = cursor.getString(cursor.getColumnIndex("BAIRRO"))
+        val estado = cursor.getString(cursor.getColumnIndex("ESTADO"))
+        val apagado = cursor.getInt(cursor.getColumnIndex("APAGADO"))
+        val id = cursor.getInt(cursor.getColumnIndex("ID"))
+
+        clienteEncontrado = ClientesData(nome, cpf, telefone, endereço, numero_residencia, complemento, referencia, cidade, bairro, estado, apagado, id)
+    }
+    cursor.close()
+
+    return clienteEncontrado
+}
+
+
+@SuppressLint("Range")
+fun Database.pegarPet(idPet: Int?): PetData? {
+    val sql = """
+        SELECT PETS.*, CLIENTES.NOME as CLIENTE_NOME, CLIENTES.CPF as CLIENTE_CPF 
+        FROM PETS 
+        INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID 
+        WHERE PETS.ID = '${idPet}'
+    """.trimIndent()
+
+    val cursor = readableDatabase.rawQuery(sql, null)
+    var petsencontrados: PetData? = null
+
+    if (cursor.moveToFirst()) {
+
+        val nome = cursor.getString(cursor.getColumnIndex("NOME"))
+        val especie = cursor.getString(cursor.getColumnIndex("ESPECIE"))
+        val raca = cursor.getString(cursor.getColumnIndex("RACA"))
+        val idade = cursor.getInt(cursor.getColumnIndex("IDADE"))
+        val peso = cursor.getInt(cursor.getColumnIndex("PESO"))
+        val alergias = cursor.getString(cursor.getColumnIndex("ALERGIAS"))
+        val observacoes = cursor.getString(cursor.getColumnIndex("OBSERVACOES"))
+        val apagado = cursor.getInt(cursor.getColumnIndex("APAGADO"))
+        val idCliente = cursor.getInt(cursor.getColumnIndex("ID_CLIENTE"))
+        val nome_cliente = cursor.getString(cursor.getColumnIndex("CLIENTE_NOME"))
+        val cpf_cliente = cursor.getString(cursor.getColumnIndex("CLIENTE_CPF"))
+        val id = cursor.getInt(cursor.getColumnIndex("ID"))
+
+        petsencontrados = PetData(nome, especie, raca, idade, peso, alergias, observacoes, apagado, idCliente, cpf_cliente, nome_cliente, id)
+    }
+    cursor.close()
+
+    return petsencontrados
+}
 
 @SuppressLint("Range")
 fun Database.pegaCliente(idCliente: Int?): ClientesData? {
@@ -102,10 +210,34 @@ fun Database.atualizarCliente(item: ClientesData): Int {
     return writableDatabase.update("CLIENTES", valores, "ID=${item.id}", null)
 }
 
+
 fun Database.apagarCliente(idClientes: Int?): Int {
     val valores = ContentValues().apply {
         put("APAGADO", 1)
     }
 
     return writableDatabase.update("CLIENTES", valores, "ID=${idClientes}", null)
+}
+
+fun Database.apagarPet(idPet: Int?): Int {
+    val valores = ContentValues().apply {
+        put("APAGADO", 1)
+    }
+
+    return writableDatabase.update("PETS", valores, "ID=${idPet}", null)
+}
+
+fun Database.atualizarPet(item: PetData): Int {
+    val valores = ContentValues().apply {
+        put("NOME", item.nome)
+        put("ESPECIE", item.especie)
+        put("RACA", item.raca)
+        put("IDADE", item.idade)
+        put("PESO", item.peso)
+        put("ALERGIAS", item.alergias)
+        put("OBSERVACOES", item.observacoes)
+        put("APAGADO", item.apagado)
+        put("ID_CLIENTE", item.idCliente)
+    }
+    return writableDatabase.update("PETS", valores, "ID=${item.id}", null)
 }
