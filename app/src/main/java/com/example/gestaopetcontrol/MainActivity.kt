@@ -1,12 +1,19 @@
 package com.example.gestaopetcontrol
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.gestaopetcontrol.databinding.ActivityMainBinding
+import androidx.core.graphics.toColorInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,17 +30,30 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnClientes.setOnClickListener {
+        binding.homeIcon.imageTintList = ColorStateList.valueOf(
+            "#909090".toColorInt()
+        )
+        binding.homeText.setTextColor("#909090".toColorInt())
+
+
+
+        val DarkModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        val isDarkModeFlag = DarkModeFlags == Configuration.UI_MODE_NIGHT_YES
+
+        //Toast.makeText(this, "${isDarkModeFlag}", Toast.LENGTH_SHORT).show()
+
+        binding.clienteArea.setOnClickListener {
             intent = Intent(this, Clientes::class.java)
             startActivity(intent)
         }
 
-        binding.btnAgendamentos.setOnClickListener {
+        binding.agendamentoArea.setOnClickListener {
             intent = Intent(this, Agendamentos::class.java)
             startActivity(intent)
         }
 
-        binding.btnPets.setOnClickListener {
+        binding.petArea.setOnClickListener {
             intent = Intent(this, Pets::class.java)
             startActivity(intent)
         }

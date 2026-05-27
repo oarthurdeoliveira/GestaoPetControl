@@ -1,10 +1,12 @@
 package com.example.gestaopetcontrol
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.toColorInt
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,27 +46,35 @@ class Agendamentos : AppCompatActivity() {
         binding.rvListaAgendamentos.adapter = agendamentosadapter
 
 
+        binding.agendamentoIcon.imageTintList = ColorStateList.valueOf(
+            "#909090".toColorInt()
+        )
+        binding.agendamentoText.setTextColor("#909090".toColorInt())
+
         //Navegação
 
-        binding.btnClientes.setOnClickListener {
+        binding.clienteArea.setOnClickListener {
             intent = Intent(this, Clientes::class.java)
             startActivity(intent)
         }
 
-        binding.btnCasa.setOnClickListener {
+        binding.homeArea.setOnClickListener {
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        binding.petArea.setOnClickListener {
+            intent = Intent(this, Pets::class.java)
+            startActivity(intent)
+        }
+
 
         binding.btnRegistroAgendamento.setOnClickListener {
             intent = Intent(this, AgendamentoRegistro::class.java)
             startActivity(intent)
         }
 
-        binding.btnPets.setOnClickListener {
-            intent = Intent(this, Pets::class.java)
-            startActivity(intent)
-        }
+
 
     }
 
