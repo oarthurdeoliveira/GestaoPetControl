@@ -15,6 +15,9 @@ data class AgendamentoData(
 
     val idPet: Int? = null,
     val id: Int? = null,
+    val idServico: Int? = null,
+    val nome_servico: String? = null,
+    val preco_servico: Double = 0.0,
 
     val onClick: ((Int?) -> Unit)? = null,
     val onLongClick: ((Int?) -> Unit)? = null

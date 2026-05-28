@@ -65,7 +65,7 @@ class ClientesRegistroInfo : AppCompatActivity() {
         val cpf = binding.edtCpf.text.toString().trim()
         val telefone = binding.edtTelefone.text.toString()
         val endereco = binding.edtEndereco.text.toString()
-        val numero_residencia = binding.ednNumero.text.toString().toInt()
+        val numero_residencia = binding.ednNumero.text.toString().toIntOrNull()
         val complemento = binding.edtComplemento.text.toString()
         val referencia = binding.edtReferencia.text.toString()
         val cidade = binding.edtCidade.text.toString()
@@ -73,6 +73,16 @@ class ClientesRegistroInfo : AppCompatActivity() {
         val estado = binding.edtEstado.text.toString()
 
         var cliente: ClientesData? = null
+
+        if (nome.isBlank() || cpf.isBlank()) {
+            Toast.makeText(this, "Informe nome e CPF", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (numero_residencia == null) {
+            Toast.makeText(this, "Informe um numero de residencia valido", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         // !! garante pro compilador que a variavel não é nula
         if(idCliente!! >= 0) {

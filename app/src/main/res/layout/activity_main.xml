@@ -7,54 +7,91 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <Button
-            android:id="@+id/btn_Casa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:enabled="false"
-            android:text="Casa" />
-
-        <Button
-            android:id="@+id/btn_Agendamentos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Agendamentos" />
-
-        <Button
-            android:id="@+id/btn_Clientes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Cliente" />
-
-        <Button
-            android:id="@+id/btn_Pets"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Pets" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Casa"
+        android:text="Relatorios"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtResumoCasa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:padding="16dp"
+        android:text="Carregando relatorios..."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/menuInferior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView4" />
+
+    <HorizontalScrollView
+        android:id="@+id/menuInferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <Button
+                android:id="@+id/btn_Casa"
+                android:layout_width="132dp"
+                android:layout_height="52dp"
+                android:clickable="false"
+                android:enabled="false"
+                android:text="Casa"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_Agendamentos"
+                android:layout_width="152dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="8dp"
+                android:text="Agendamentos"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_Clientes"
+                android:layout_width="132dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="8dp"
+                android:text="Clientes"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_Pets"
+                android:layout_width="132dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="8dp"
+                android:text="Pets"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_Servicos"
+                android:layout_width="132dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="8dp"
+                android:text="Servicos"
+                android:textAllCaps="false" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

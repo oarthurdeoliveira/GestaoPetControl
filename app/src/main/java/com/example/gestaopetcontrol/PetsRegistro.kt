@@ -92,12 +92,22 @@ class PetsRegistro : AppCompatActivity() {
         val nome_pet = binding.edtNomePet.text.toString()
         val especie = binding.edtEspeciePet.text.toString()
         val raca = binding.edtRacaPet.text.toString()
-        val idade = binding.edtIdadePet.text.toString().toInt()
-        val peso = binding.edtPesoPet.text.toString().toInt()
+        val idade = binding.edtIdadePet.text.toString().toIntOrNull()
+        val peso = binding.edtPesoPet.text.toString().toIntOrNull()
         val alergias = binding.edtAlergiasPet.text.toString()
         val observacoes = binding.edtObservacoesPet.text.toString()
 
         var pet: PetData? = null
+
+        if (nome_pet.isBlank()) {
+            Toast.makeText(this, "Informe o nome do pet", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (idade == null || peso == null) {
+            Toast.makeText(this, "Informe idade e peso validos", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         if (idPet!! >= 1) {
             // Editando um existente
