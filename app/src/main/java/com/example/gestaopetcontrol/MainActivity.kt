@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnServicos.setOnClickListener {
+        binding.servicosArea.setOnClickListener {
             intent = Intent(this, Servicos::class.java)
             startActivity(intent)
         }

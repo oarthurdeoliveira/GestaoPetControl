@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Clientes">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,65 +12,73 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="Clientes"
+                android:layout_marginBottom="20dp"
+                android:text="Servicos"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/edtNomeServico"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/edtCpfPesquisa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="CPF Cliente"
-                    android:inputType="text" />
-
-                <Button
-                    android:id="@+id/btnPesquisarCliente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Pesquisar Cliente" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:text="Clientes Registrados"
-                android:textSize="20sp" />
+                android:layout_marginBottom="10dp"
+                android:hint="Nome do servico" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_lista"
+            <EditText
+                android:id="@+id/edtPrecoServico"
                 android:layout_width="match_parent"
-                android:layout_height="336dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Preco"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/edtDescricaoServico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:hint="Descricao"
+                android:minLines="2" />
 
             <Button
-                android:id="@+id/btn_Registro"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnSalvarServico"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:text="Novo registro" />
+                android:layout_marginBottom="10dp"
+                android:text="Salvar Servico" />
 
+            <Button
+                android:id="@+id/btnLimparServico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Novo Servico" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Servicos cadastrados"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Toque para editar. Segure para excluir."
+                android:textColor="#777777" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListaServicos"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp" />
         </LinearLayout>
     </ScrollView>
 
@@ -83,7 +90,6 @@
         android:divider="@drawable/spacer_nav"
         android:dividerPadding="0dp"
         android:gravity="center"
-        android:orientation="horizontal"
         android:padding="10dp"
         android:showDividers="middle"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,7 +116,7 @@
                 android:gravity="center"
                 android:text="Casa"
                 android:textColor="#2A2A2A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -136,7 +142,7 @@
                 android:gravity="center"
                 android:text="Agendamento"
                 android:textColor="#2A2A2A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -161,7 +167,7 @@
                 android:gravity="center"
                 android:text="Pets"
                 android:textColor="#2A2A2A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -187,7 +193,7 @@
                 android:gravity="center"
                 android:text="Clientes"
                 android:textColor="#2A2A2A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -75,6 +75,11 @@ class Agendamentos : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.servicosArea.setOnClickListener {
+            intent = Intent(this, Servicos::class.java)
+            startActivity(intent)
+        }
+
 
 
     }

@@ -3,6 +3,8 @@ package com.example.gestaopetcontrol
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 class AgendamentoViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private var itemHora = itemView.findViewById<TextView>(R.id.linhaAgen_txtHora)
@@ -12,7 +14,8 @@ class AgendamentoViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
 
     fun bind(item: AgendamentoData) {
-        itemHora.text = item.hora
+        val hora_formatada = LocalTime.parse(item.hora)
+        itemHora.text = hora_formatada.format(DateTimeFormatter.ofPattern("HH:mm"))
         itemNomePet.text = item.nome_pet
         itemNomeDono.text = item.nome_dono
         val servico = item.nome_servico ?: "Servico nao informado"

@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GestaoPetControl">
         <activity
-            android:name=".Relatorios"
-            android:exported="false" />
-        <activity
             android:name=".Servicos"
             android:exported="false" />
         <activity

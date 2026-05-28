@@ -73,6 +73,11 @@ class Pets : AppCompatActivity() {
             pesquisarpet()
         }
 
+        binding.servicosArea.setOnClickListener {
+            intent = Intent(this, Servicos::class.java)
+            startActivity(intent)
+        }
+
     }
 
     override fun onStart() {
