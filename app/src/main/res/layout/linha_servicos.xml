@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/linhaServico_txtNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Banho"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/linhaServico_txtPreco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="R$ 50,00"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/linhaServico_txtDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Servico padrao"
+        android:textColor="#8A8A8A"
+        android:textSize="14sp" />
+</LinearLayout>

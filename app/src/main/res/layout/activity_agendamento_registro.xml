@@ -98,6 +98,20 @@
                 android:enabled="false"
                 android:inputType="text" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Serviço"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spinnerServicoAgendamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                android:spinnerMode="dropdown" />
+
             <EditText
                 android:id="@+id/eddataDataAgendamento"
                 android:layout_width="match_parent"
@@ -128,20 +142,6 @@
                 android:hint="Observação"
                 android:inputType="text"
                 android:paddingBottom="80dp" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="Serviços"
-                android:textSize="20sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvServicosAgendamento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp" />
 
             <Button
                 android:id="@+id/btnAgendar"

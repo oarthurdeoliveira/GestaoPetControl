@@ -69,6 +69,11 @@ class Clientes : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.servicosArea.setOnClickListener {
+            intent = Intent(this, Servicos::class.java)
+            startActivity(intent)
+        }
+
         //outro
 
         binding.btnPesquisarCliente.setOnClickListener {
@@ -95,8 +100,13 @@ class Clientes : AppCompatActivity() {
         if (binding.edtCpfPesquisa.length() <= 0) {
             Toast.makeText(this, "Escreva um cpf para poder pesquisar", Toast.LENGTH_SHORT).show()
         }else {
-            val cpf = binding.edtCpfPesquisa.text.toString()
-            val sql = "SELECT * FROM CLIENTES WHERE CPF = '${cpf}' AND APAGADO = 0 ORDER BY NOME"
+            val termo = binding.edtCpfPesquisa.text.toString()
+            val sql = """
+                SELECT * FROM CLIENTES
+                WHERE APAGADO = 0
+                AND (CPF LIKE '%${termo}%' OR NOME LIKE '%${termo}%' OR TELEFONE LIKE '%${termo}%')
+                ORDER BY NOME
+            """.trimIndent()
             val clientesData = database.selecionarClientes(sql).map {
                 it.copy(onClick = ::editarCliente, onLongClick = ::apagarCliente)
             }

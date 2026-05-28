@@ -73,6 +73,11 @@ class Pets : AppCompatActivity() {
             pesquisarpet()
         }
 
+        binding.servicosArea.setOnClickListener {
+            intent = Intent(this, Servicos::class.java)
+            startActivity(intent)
+        }
+
     }
 
     override fun onStart() {
@@ -98,12 +103,13 @@ class Pets : AppCompatActivity() {
         if (binding.edtCpfClientePets.length() <= 0) {
             Toast.makeText(this, "Escreve o CPF do cliente para procurar os pets", Toast.LENGTH_SHORT).show()
         }else {
-            val cpf_cliente_buscar = binding.edtCpfClientePets.text
+            val termo = binding.edtCpfClientePets.text.toString()
             val sql = """
                 SELECT PETS.*, CLIENTES.NOME as CLIENTE_NOME, CLIENTES.CPF as CLIENTE_CPF 
                 FROM PETS 
                 INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID
-                WHERE PETS.APAGADO = 0 AND CLIENTES.CPF = '${cpf_cliente_buscar}'
+                WHERE PETS.APAGADO = 0
+                AND (CLIENTES.CPF LIKE '%${termo}%' OR CLIENTES.NOME LIKE '%${termo}%' OR PETS.NOME LIKE '%${termo}%')
             """.trimIndent()
 
             val petsdata = database.selecionarPets(sql).map {

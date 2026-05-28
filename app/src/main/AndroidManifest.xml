@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GestaoPetControl">
         <activity
+            android:name=".Servicos"
+            android:exported="false" />
+        <activity
             android:name=".PetsRegistro"
             android:windowSoftInputMode="adjustPan"
             android:exported="false" />
