@@ -98,6 +98,20 @@
                 android:enabled="false"
                 android:inputType="text" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Servico"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spinnerServicoAgendamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                android:spinnerMode="dropdown" />
+
             <EditText
                 android:id="@+id/eddataDataAgendamento"
                 android:layout_width="match_parent"

@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestaopetcontrol.banco.Database
+import com.example.gestaopetcontrol.banco.apagarAgendamento
 import com.example.gestaopetcontrol.banco.selecionarAgendamentos
 import com.example.gestaopetcontrol.databinding.ActivityAgendamentosBinding
 
@@ -93,11 +94,25 @@ class Agendamentos : AppCompatActivity() {
     }
 
     private fun editarAgendamentos(idAgendamento: Int?) {
-        Toast.makeText(this,"click curto ${idAgendamento}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, AgendamentoRegistro::class.java)
+        intent.putExtra("ID_AGENDAMENTO", idAgendamento)
+        startActivity(intent)
     }
 
     private fun apagarAgendamentos(idAgendamento: Int?) {
-        Toast.makeText(this,"click loongo ${idAgendamento}", Toast.LENGTH_SHORT).show()
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Apagar Agendamento")
+            .setMessage("Deseja apagar este agendamento?")
+            .setNegativeButton("Cancelar", null)
+            .setPositiveButton("Apagar") { _, _ ->
+                database.apagarAgendamento(idAgendamento)
+                val agendamentodata = database.selecionarAgendamentos().map {
+                    it.copy(onClick = ::editarAgendamentos, onLongClick = ::apagarAgendamentos)
+                }
+                agendamentosadapter.updateItens(agendamentodata)
+                Toast.makeText(this, "Agendamento apagado", Toast.LENGTH_SHORT).show()
+            }
+            .show()
     }
 
 }

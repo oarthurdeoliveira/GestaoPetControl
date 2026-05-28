@@ -9,6 +9,7 @@ import com.example.gestaopetcontrol.Clientes
 import com.example.gestaopetcontrol.ClientesData
 import com.example.gestaopetcontrol.PetData
 import com.example.gestaopetcontrol.Pets
+import com.example.gestaopetcontrol.ServicoData
 
 
 
@@ -18,9 +19,55 @@ fun Database.inserirAgendamento(item: AgendamentoData): Long{
         put("HORA", item.hora)
         put("OBSERVACOES", item.observacao)
         put("APAGADO", item.apagado)
+        put("ID_SERVICO", item.idServico)
         put("ID_PET", item.idPet)
     })
     return idAgendamento
+}
+
+fun Database.atualizarAgendamento(item: AgendamentoData): Int {
+    val valores = ContentValues().apply {
+        put("DATA", item.data)
+        put("HORA", item.hora)
+        put("OBSERVACOES", item.observacao)
+        put("APAGADO", item.apagado)
+        put("ID_SERVICO", item.idServico)
+        put("ID_PET", item.idPet)
+    }
+    return writableDatabase.update("AGENDAMENTOS", valores, "ID=${item.id}", null)
+}
+
+fun Database.inserirServico(item: ServicoData): Long {
+    return writableDatabase.insert("SERVICOS", null, ContentValues().apply {
+        put("NOME", item.nome)
+        put("PRECO", item.preco)
+        put("DESCRICAO", item.descricao)
+        put("APAGADO", item.apagado)
+    })
+}
+
+fun Database.atualizarServico(item: ServicoData): Int {
+    val valores = ContentValues().apply {
+        put("NOME", item.nome)
+        put("PRECO", item.preco)
+        put("DESCRICAO", item.descricao)
+        put("APAGADO", item.apagado)
+    }
+    return writableDatabase.update("SERVICOS", valores, "ID=${item.id}", null)
+}
+
+fun Database.apagarServico(idServico: Int?): Int {
+    val valores = ContentValues().apply {
+        put("APAGADO", 1)
+    }
+    return writableDatabase.update("SERVICOS", valores, "ID=${idServico}", null)
+}
+
+fun Database.apagarAgendamento(idAgendamento: Int?): Int {
+    val valores = ContentValues().apply {
+        put("APAGADO", 1)
+    }
+    return writableDatabase.update("AGENDAMENTOS", valores, "ID=${idAgendamento}", null)
 }
 
 fun Database.inserirCliente(item: ClientesData): Long {
@@ -57,11 +104,13 @@ fun Database.inserirPet(item: PetData): Long {
 @SuppressLint("Range")
 fun Database.selecionarAgendamentos(): List<AgendamentoData> {
     val sql = """
-         SELECT AGENDAMENTOS.*, CLIENTES.NOME as NOME_DONO, CLIENTES.CPF as CPF_DONO, PETS.NOME as NOME_PET, PETS.RACA as RACA_PET, PETS.ESPECIE as ESPECIE_PET
+         SELECT AGENDAMENTOS.*, CLIENTES.NOME as NOME_DONO, CLIENTES.CPF as CPF_DONO, PETS.NOME as NOME_PET, PETS.RACA as RACA_PET, PETS.ESPECIE as ESPECIE_PET,
+                SERVICOS.NOME as NOME_SERVICO, SERVICOS.PRECO as PRECO_SERVICO
          FROM AGENDAMENTOS
          INNER JOIN PETS ON AGENDAMENTOS.ID_PET = PETS.ID
          INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID
-         WHERE (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) >= datetime('now', 'localtime')
+         LEFT JOIN SERVICOS ON AGENDAMENTOS.ID_SERVICO = SERVICOS.ID
+         WHERE AGENDAMENTOS.APAGADO = 0
          ORDER BY (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) ASC
     """.trimIndent()
     val cursor = readableDatabase.rawQuery(sql, null)
@@ -79,7 +128,10 @@ fun Database.selecionarAgendamentos(): List<AgendamentoData> {
                 raca_pet = cursor.getString(cursor.getColumnIndex("RACA_PET")),
                 especie_pet = cursor.getString(cursor.getColumnIndex("ESPECIE_PET")),
                 id = cursor.getInt(cursor.getColumnIndex("ID")),
-                idPet = cursor.getInt(cursor.getColumnIndex("ID_PET"))
+                idPet = cursor.getInt(cursor.getColumnIndex("ID_PET")),
+                idServico = cursor.getInt(cursor.getColumnIndex("ID_SERVICO")),
+                nome_servico = cursor.getString(cursor.getColumnIndex("NOME_SERVICO")),
+                preco_servico = cursor.getDouble(cursor.getColumnIndex("PRECO_SERVICO"))
             )
             returnList.add(agendamento)
         }
@@ -290,4 +342,80 @@ fun Database.atualizarPet(item: PetData): Int {
         put("ID_CLIENTE", item.idCliente)
     }
     return writableDatabase.update("PETS", valores, "ID=${item.id}", null)
+}
+
+@SuppressLint("Range")
+fun Database.selecionarServicos(sql: String = "SELECT * FROM SERVICOS WHERE APAGADO = 0 ORDER BY NOME"): List<ServicoData> {
+    val cursor = readableDatabase.rawQuery(sql, null)
+    val returnList = mutableListOf<ServicoData>()
+    if (cursor.count > 0) {
+        while (cursor.moveToNext()) {
+            val servico = ServicoData(
+                nome = cursor.getString(cursor.getColumnIndex("NOME")),
+                preco = cursor.getDouble(cursor.getColumnIndex("PRECO")),
+                descricao = cursor.getString(cursor.getColumnIndex("DESCRICAO")),
+                apagado = cursor.getInt(cursor.getColumnIndex("APAGADO")),
+                id = cursor.getInt(cursor.getColumnIndex("ID"))
+            )
+            returnList.add(servico)
+        }
+    }
+    cursor.close()
+    return returnList
+}
+
+@SuppressLint("Range")
+fun Database.pegarServico(idServico: Int?): ServicoData? {
+    val cursor = readableDatabase.rawQuery(
+        "SELECT * FROM SERVICOS WHERE ID = ? AND APAGADO = 0",
+        arrayOf(idServico.toString())
+    )
+    var servicoEncontrado: ServicoData? = null
+    if (cursor.moveToFirst()) {
+        servicoEncontrado = ServicoData(
+            nome = cursor.getString(cursor.getColumnIndex("NOME")),
+            preco = cursor.getDouble(cursor.getColumnIndex("PRECO")),
+            descricao = cursor.getString(cursor.getColumnIndex("DESCRICAO")),
+            apagado = cursor.getInt(cursor.getColumnIndex("APAGADO")),
+            id = cursor.getInt(cursor.getColumnIndex("ID"))
+        )
+    }
+    cursor.close()
+    return servicoEncontrado
+}
+
+@SuppressLint("Range")
+fun Database.pegarAgendamento(idAgendamento: Int?): AgendamentoData? {
+    val sql = """
+         SELECT AGENDAMENTOS.*, CLIENTES.NOME as NOME_DONO, CLIENTES.CPF as CPF_DONO, PETS.NOME as NOME_PET, PETS.RACA as RACA_PET, PETS.ESPECIE as ESPECIE_PET,
+                SERVICOS.NOME as NOME_SERVICO, SERVICOS.PRECO as PRECO_SERVICO
+         FROM AGENDAMENTOS
+         INNER JOIN PETS ON AGENDAMENTOS.ID_PET = PETS.ID
+         INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID
+         LEFT JOIN SERVICOS ON AGENDAMENTOS.ID_SERVICO = SERVICOS.ID
+         WHERE AGENDAMENTOS.ID = '${idAgendamento}' AND AGENDAMENTOS.APAGADO = 0
+    """.trimIndent()
+
+    val cursor = readableDatabase.rawQuery(sql, null)
+    var agendamento: AgendamentoData? = null
+    if (cursor.moveToFirst()) {
+        agendamento = AgendamentoData(
+            data = cursor.getString(cursor.getColumnIndex("DATA")),
+            hora = cursor.getString(cursor.getColumnIndex("HORA")),
+            observacao = cursor.getString(cursor.getColumnIndex("OBSERVACOES")),
+            apagado = cursor.getInt(cursor.getColumnIndex("APAGADO")),
+            nome_pet = cursor.getString(cursor.getColumnIndex("NOME_PET")),
+            nome_dono = cursor.getString(cursor.getColumnIndex("NOME_DONO")),
+            cpf_dono = cursor.getString(cursor.getColumnIndex("CPF_DONO")),
+            raca_pet = cursor.getString(cursor.getColumnIndex("RACA_PET")),
+            especie_pet = cursor.getString(cursor.getColumnIndex("ESPECIE_PET")),
+            id = cursor.getInt(cursor.getColumnIndex("ID")),
+            idPet = cursor.getInt(cursor.getColumnIndex("ID_PET")),
+            idServico = cursor.getInt(cursor.getColumnIndex("ID_SERVICO")),
+            nome_servico = cursor.getString(cursor.getColumnIndex("NOME_SERVICO")),
+            preco_servico = cursor.getDouble(cursor.getColumnIndex("PRECO_SERVICO"))
+        )
+    }
+    cursor.close()
+    return agendamento
 }

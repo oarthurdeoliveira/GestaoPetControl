@@ -15,7 +15,8 @@ class AgendamentoViewHolder(view: View): RecyclerView.ViewHolder(view) {
         itemHora.text = item.hora
         itemNomePet.text = item.nome_pet
         itemNomeDono.text = item.nome_dono
-        itemExtraPet.text = "${item.especie_pet} - ${item.raca_pet}"
+        val servico = item.nome_servico ?: "Servico nao informado"
+        itemExtraPet.text = "${item.especie_pet} - ${item.raca_pet} | $servico"
 
         itemView.setOnClickListener {
             item.onClick?.invoke(item.id)
