@@ -5,52 +5,78 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Agendamentos">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/txt_tituloAgen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="@font/googlesansflex"
+            android:text="Agendamentos"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textFontWeight="600"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/txt_TituloListaAgen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:fontFamily="@font/googlesansflex"
+            android:text="Próximas Consultas"
+            android:textColor="@color/black"
+            android:textFontWeight="500"
+            android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="25dp"
-                android:text="Agendamentos"
-                android:textAlignment="center"
-                android:textSize="30sp" />
+        <ImageView
+            android:id="@+id/imgV_linhaAgen"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/linha_agendamentos"
+            app:srcCompat="@drawable/linha_agendamentos" />
 
-            <TextView
-                android:id="@+id/textView8"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="530dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:text="Agendamentos Cadastrados"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvListaAgendamentos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvListaAgendamentos"
+                    android:layout_width="match_parent"
+                    android:layout_height="530dp"
+                    android:layout_marginBottom="20dp" />
+            </LinearLayout>
+        </ScrollView>
 
-            <Button
-                android:id="@+id/btnRegistroAgendamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
-                android:text="Novo agendamento" />
+    </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
+    <Button
+        android:id="@+id/btnRegistroAgendamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/googlesansflex"
+        android:text="Novo agendamento"
+        android:textFontWeight="600"
+        app:layout_constraintBottom_toTopOf="@+id/layout_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/layout_nav"
@@ -84,10 +110,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/googlesansflex"
                 android:gravity="center"
                 android:text="Casa"
                 android:textColor="#2A2A2A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -110,10 +137,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/googlesansflex"
                 android:gravity="center"
                 android:text="Agendamento"
                 android:textColor="#2A2A2A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -135,10 +163,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/googlesansflex"
                 android:gravity="center"
                 android:text="Pets"
                 android:textColor="#2A2A2A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -161,10 +190,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/googlesansflex"
                 android:gravity="center"
                 android:text="Clientes"
                 android:textColor="#2A2A2A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -188,9 +218,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:fontFamily="@font/googlesansflex"
                 android:text="Serviços"
                 android:textColor="#2A2A2A"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

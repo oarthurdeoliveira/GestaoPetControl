@@ -8,13 +8,11 @@ class PetsViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     private val itemNomePet = itemView.findViewById<TextView>(R.id.linhaPet_txtNomepet)
     private val itemNomeCliente = itemView.findViewById<TextView>(R.id.linhaPet_txtNomeCliente)
-    private val itemCpfCliente = itemView.findViewById<TextView>(R.id.linhaPet_txtCpfCliente)
 
 
     fun bind(item: PetData) {
         itemNomePet.text = item.nome
         itemNomeCliente.text = item.nome_cliente
-        itemCpfCliente.text = item.cpf_cliente
 
         itemView.setOnClickListener {
             item.onClick?.invoke(item.id)

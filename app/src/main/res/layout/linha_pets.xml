@@ -3,32 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/linhaPet_txtNomepet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="150dp"
-            android:text="Thor" />
+            android:fontFamily="@font/googlesansflex"
+            android:text="Thor"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/linhaPet_txtNomeCliente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Pedro" />
+            android:background="@drawable/box_agen"
+            android:fontFamily="@font/googlesansflex"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
+            android:text="Pedro"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/linhaPet_txtCpfCliente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="000.000.000-00" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
