@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/googlesansflex"
             android:text="Relatórios"
+            android:textColor="@color/black"
             android:textFontWeight="600"
             android:textSize="24sp" />
 
@@ -53,6 +54,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/googlesansflex"
                 android:text="TextView"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -63,6 +65,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/googlesansflex"
                 android:text="TextView"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -73,6 +76,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/googlesansflex"
                 android:text="TextView"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -83,6 +87,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/googlesansflex"
                 android:text="TextView"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -92,6 +97,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/googlesansflex"
                 android:text="TextView"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 

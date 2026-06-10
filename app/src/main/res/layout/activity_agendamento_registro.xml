@@ -64,7 +64,8 @@
                     android:hint="CPF"
                     android:inputType="number"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
                 <Button
                     android:id="@+id/btn_PesquisarClienteAgen"
@@ -89,7 +90,8 @@
                 android:hint="Nome"
                 android:inputType="text"
                 android:padding="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="#9E9E9E" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -107,6 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/text_input_materialdesign"
+                android:padding="10dp"
                 android:spinnerMode="dropdown" />
 
             <EditText
@@ -137,6 +141,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/text_input_materialdesign"
+                android:padding="10dp"
                 android:spinnerMode="dropdown" />
 
             <EditText
@@ -152,7 +158,8 @@
                 android:hint="Data"
                 android:inputType="date"
                 android:padding="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="#9E9E9E" />
 
             <EditText
                 android:id="@+id/edtimeHora"
@@ -166,7 +173,8 @@
                 android:hint="Hora"
                 android:inputType="time"
                 android:padding="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="#9E9E9E" />
 
             <EditText
                 android:id="@+id/edtObsAgen"
@@ -181,7 +189,8 @@
                 android:paddingStart="10dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="80dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="#9E9E9E" />
 
             <Button
                 android:id="@+id/btnAgendar"

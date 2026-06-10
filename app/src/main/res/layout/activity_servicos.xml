@@ -37,7 +37,8 @@
                 android:fontFamily="@font/googlesansflex"
                 android:hint="Nome do serviço"
                 android:padding="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="#9E9E9E" />
 
             <EditText
                 android:id="@+id/edtPrecoServico"
@@ -49,7 +50,8 @@
                 android:hint="Preço (R$)"
                 android:inputType="numberDecimal"
                 android:padding="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="#9E9E9E" />
 
             <EditText
                 android:id="@+id/edtDescricaoServico"
@@ -61,7 +63,8 @@
                 android:minLines="2"
                 android:paddingLeft="10dp"
                 android:paddingBottom="20dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="#9E9E9E" />
 
             <Button
                 android:id="@+id/btnSalvarServico"

@@ -73,7 +73,8 @@
                     android:hint="CPF"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
                 <View
                     android:id="@+id/divider2"
@@ -91,7 +92,8 @@
                     android:hint="Nome"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
                 <View
                     android:id="@+id/divider"
@@ -109,7 +111,8 @@
                     android:hint="Numero telefone"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
             </LinearLayout>
 
@@ -137,7 +140,8 @@
                     android:hint="Endereço"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
                 <EditText
                     android:id="@+id/edn_numero"
@@ -149,7 +153,8 @@
                     android:hint="Numero"
                     android:inputType="number"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
             </LinearLayout>
 
@@ -177,7 +182,8 @@
                     android:hint="Complemento"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
                 <EditText
                     android:id="@+id/edt_referencia"
@@ -189,7 +195,8 @@
                     android:hint="Referencia"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
             </LinearLayout>
 
@@ -217,7 +224,8 @@
                     android:hint="Cidade"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
                 <EditText
                     android:id="@+id/edt_bairro"
@@ -229,7 +237,8 @@
                     android:hint="Bairro"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
 
             </LinearLayout>
 
@@ -256,7 +265,8 @@
                     android:hint="Estado"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#9E9E9E" />
             </LinearLayout>
 
             <View
