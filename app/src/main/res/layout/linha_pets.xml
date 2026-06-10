@@ -37,7 +37,7 @@
             android:hapticFeedbackEnabled="false"
             android:text="Pedro"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

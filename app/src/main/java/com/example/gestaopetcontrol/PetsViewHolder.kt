@@ -12,7 +12,7 @@ class PetsViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     fun bind(item: PetData) {
         itemNomePet.text = item.nome
-        itemNomeCliente.text = item.nome_cliente
+        itemNomeCliente.text = "${item.nome_cliente}"
 
         itemView.setOnClickListener {
             item.onClick?.invoke(item.id)

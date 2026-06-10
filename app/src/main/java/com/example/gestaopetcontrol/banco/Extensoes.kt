@@ -231,6 +231,21 @@ fun Database.pegaClienteCPF(CPF: String): ClientesData? {
     return clienteEncontrado
 }
 
+@SuppressLint("Range")
+fun Database.pegaQuantidadePetsCliente(CPF_CLIENTE: String): Int {
+    val sql = "SELECT COUNT(PETS.ID) AS 'TOTAL_PETS' FROM PETS INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID WHERE CLIENTES.CPF = '${CPF_CLIENTE}' AND PETS.APAGADO = 0"
+    val cursor = readableDatabase.rawQuery(sql, null)
+    var quantidade = 0
+    if (cursor.moveToFirst()) {
+        val valor = cursor.getInt(cursor.getColumnIndex("TOTAL_PETS"))
+
+        quantidade = valor
+    }
+    cursor.close()
+
+    return quantidade
+}
+
 
 @SuppressLint("Range")
 fun Database.pegarPet(idPet: Int?): PetData? {

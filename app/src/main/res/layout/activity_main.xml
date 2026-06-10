@@ -19,25 +19,81 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="35dp"
             android:fontFamily="@font/googlesansflex"
             android:text="Casa"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textFontWeight="600"
-            android:textSize="30sp" />
+            android:textSize="35sp" />
 
         <TextView
-            android:id="@+id/txtResumoCasa"
+            android:id="@+id/txtRela_Titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
             android:fontFamily="@font/googlesansflex"
-            android:padding="16dp"
-            android:text="Carregando relatorios..."
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:text="Relatórios"
+            android:textFontWeight="600"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/layoutLV_relatorios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/txtRela_Clientes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/googlesansflex"
+                android:text="TextView"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtRela_PetsCadastrados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/googlesansflex"
+                android:text="TextView"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtRela_ServicosAtivos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/googlesansflex"
+                android:text="TextView"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtRela_AgendamentosAtivos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/googlesansflex"
+                android:text="TextView"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtRela_Renda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/googlesansflex"
+                android:text="TextView"
+                android:textSize="18sp" />
+        </LinearLayout>
 
     </LinearLayout>
 

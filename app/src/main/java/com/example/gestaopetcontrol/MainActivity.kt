@@ -4,9 +4,11 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -15,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.gestaopetcontrol.banco.Database
 import com.example.gestaopetcontrol.databinding.ActivityMainBinding
 import androidx.core.graphics.toColorInt
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -98,12 +101,13 @@ class MainActivity : AppCompatActivity() {
         val receitaPrevista = cursorReceita.getDouble(0)
         cursorReceita.close()
 
-        binding.txtResumoCasa.text = """
-            Clientes ativos: ${contar("CLIENTES")}
-            Pets ativos: ${contar("PETS")}
-            Servicos ativos: ${contar("SERVICOS")}
-            Agendamentos ativos: ${contar("AGENDAMENTOS")}
-            Receita prevista: R$ %.2f
-        """.trimIndent().format(receitaPrevista)
+        binding.txtRelaClientes.text = "Clientes ativos: ${contar("CLIENTES")}"
+        binding.txtRelaPetsCadastrados.text = "Pets ativos: ${contar("PETS")}"
+        binding.txtRelaServicosAtivos.text = "Servicos ativos: ${contar("SERVICOS")}"
+        binding.txtRelaAgendamentosAtivos.text = "Agendamentos ativos: ${contar("AGENDAMENTOS")}"
+        // O locale FRANCE é so pra trocar o . pelo ,
+        // eu poderia so substituir o . pelo ',', mas isso serve também
+        binding.txtRelaRenda.text = String.format(Locale.FRANCE, "Receita prevista: R$ %.2f", receitaPrevista)
+
     }
 }
