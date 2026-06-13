@@ -72,7 +72,7 @@ class Database(context: Context): SQLiteOpenHelper(context, "banco.db", null, 1)
         p0?.execSQL(sql_pets)
         p0?.execSQL(sql_servicos)
         p0?.execSQL(sql_agendamentos)
-        inserirServicosPadrao(p0)
+        //inserirServicosPadrao(p0)
 
     }
 

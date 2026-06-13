@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestaopetcontrol.banco.Database
 import com.example.gestaopetcontrol.banco.apagarAgendamento
 import com.example.gestaopetcontrol.banco.selecionarAgendamentos
+import com.example.gestaopetcontrol.banco.selecionarClientes
 import com.example.gestaopetcontrol.databinding.ActivityAgendamentosBinding
 
 class Agendamentos : AppCompatActivity() {
@@ -80,6 +81,10 @@ class Agendamentos : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnPesquisarCliente.setOnClickListener {
+            pesquisaragendamento()
+        }
+
 
 
     }
@@ -91,7 +96,25 @@ class Agendamentos : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val agendamentodata = database.selecionarAgendamentos().map {
+        val sql = """
+            SELECT AGENDAMENTOS.*, 
+                   CLIENTES.NOME as NOME_DONO, 
+                   CLIENTES.CPF as CPF_DONO, 
+                   PETS.NOME as NOME_PET, 
+                   PETS.RACA as RACA_PET, 
+                   PETS.ESPECIE as ESPECIE_PET,
+                   SERVICOS.NOME as NOME_SERVICO, 
+                   SERVICOS.PRECO as PRECO_SERVICO
+            FROM AGENDAMENTOS
+            INNER JOIN PETS ON AGENDAMENTOS.ID_PET = PETS.ID
+            INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID
+            LEFT JOIN SERVICOS ON AGENDAMENTOS.ID_SERVICO = SERVICOS.ID
+            WHERE AGENDAMENTOS.APAGADO = 0
+              AND (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) >= datetime('now', 'localtime')
+            ORDER BY (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) ASC
+        """.trimIndent()
+
+        val agendamentodata = database.selecionarAgendamentos(sql).map {
             it.copy (onClick = ::editarAgendamentos, onLongClick = ::apagarAgendamentos)
         }
         agendamentosadapter.updateItens(agendamentodata)
@@ -110,14 +133,67 @@ class Agendamentos : AppCompatActivity() {
             .setMessage("Deseja apagar este agendamento?")
             .setNegativeButton("Cancelar", null)
             .setPositiveButton("Apagar") { _, _ ->
+                val sql = """
+                    SELECT AGENDAMENTOS.*, 
+                           CLIENTES.NOME as NOME_DONO, 
+                           CLIENTES.CPF as CPF_DONO, 
+                           PETS.NOME as NOME_PET, 
+                           PETS.RACA as RACA_PET, 
+                           PETS.ESPECIE as ESPECIE_PET,
+                           SERVICOS.NOME as NOME_SERVICO, 
+                           SERVICOS.PRECO as PRECO_SERVICO
+                    FROM AGENDAMENTOS
+                    INNER JOIN PETS ON AGENDAMENTOS.ID_PET = PETS.ID
+                    INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID
+                    LEFT JOIN SERVICOS ON AGENDAMENTOS.ID_SERVICO = SERVICOS.ID
+                    WHERE AGENDAMENTOS.APAGADO = 0
+                      AND (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) >= datetime('now', 'localtime')
+                    ORDER BY (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) ASC
+                """.trimIndent()
                 database.apagarAgendamento(idAgendamento)
-                val agendamentodata = database.selecionarAgendamentos().map {
+                val agendamentodata = database.selecionarAgendamentos(sql).map {
                     it.copy(onClick = ::editarAgendamentos, onLongClick = ::apagarAgendamentos)
                 }
                 agendamentosadapter.updateItens(agendamentodata)
                 Toast.makeText(this, "Agendamento apagado", Toast.LENGTH_SHORT).show()
             }
             .show()
+    }
+
+    private fun pesquisaragendamento() {
+        if (binding.edtCpfPesquisa.length() <= 0) {
+            Toast.makeText(this, "Escreva um cpf para poder pesquisar", Toast.LENGTH_SHORT).show()
+        }else {
+            val termo = binding.edtCpfPesquisa.text.toString()
+            val sql = """
+            SELECT AGENDAMENTOS.*, 
+                   CLIENTES.NOME as NOME_DONO, 
+                   CLIENTES.CPF as CPF_DONO, 
+                   PETS.NOME as NOME_PET, 
+                   PETS.RACA as RACA_PET, 
+                   PETS.ESPECIE as ESPECIE_PET,
+                   SERVICOS.NOME as NOME_SERVICO, 
+                   SERVICOS.PRECO as PRECO_SERVICO
+            FROM AGENDAMENTOS
+            INNER JOIN PETS ON AGENDAMENTOS.ID_PET = PETS.ID
+            INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID
+            LEFT JOIN SERVICOS ON AGENDAMENTOS.ID_SERVICO = SERVICOS.ID
+            WHERE AGENDAMENTOS.APAGADO = 0
+            AND (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) >= datetime('now', 'localtime')
+            AND CLIENTES.CPF = '${termo}'
+            ORDER BY (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) ASC
+        """.trimIndent()
+
+            val agendamentoData = database.selecionarAgendamentos(sql).map {
+                it.copy(onClick = ::editarAgendamentos, onLongClick = ::apagarAgendamentos)
+            }
+
+            if (agendamentoData.isEmpty()) {
+                Toast.makeText(this, "Cliente não encontrado", Toast.LENGTH_SHORT).show()
+            }
+
+            agendamentosadapter.updateItens(agendamentoData)
+        }
     }
 
 }

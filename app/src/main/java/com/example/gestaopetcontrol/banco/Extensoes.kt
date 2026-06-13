@@ -102,25 +102,7 @@ fun Database.inserirPet(item: PetData): Long {
 }
 
 @SuppressLint("Range")
-fun Database.selecionarAgendamentos(): List<AgendamentoData> {
-    val sql = """
-        SELECT AGENDAMENTOS.*, 
-               CLIENTES.NOME as NOME_DONO, 
-               CLIENTES.CPF as CPF_DONO, 
-               PETS.NOME as NOME_PET, 
-               PETS.RACA as RACA_PET, 
-               PETS.ESPECIE as ESPECIE_PET,
-               SERVICOS.NOME as NOME_SERVICO, 
-               SERVICOS.PRECO as PRECO_SERVICO
-        FROM AGENDAMENTOS
-        INNER JOIN PETS ON AGENDAMENTOS.ID_PET = PETS.ID
-        INNER JOIN CLIENTES ON PETS.ID_CLIENTE = CLIENTES.ID
-        LEFT JOIN SERVICOS ON AGENDAMENTOS.ID_SERVICO = SERVICOS.ID
-        WHERE AGENDAMENTOS.APAGADO = 0
-          AND (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) >= datetime('now', 'localtime')
-        ORDER BY (AGENDAMENTOS.DATA || ' ' || AGENDAMENTOS.HORA) ASC
-        LIMIT 1
-    """.trimIndent()
+fun Database.selecionarAgendamentos(sql: String): List<AgendamentoData> {
     val cursor = readableDatabase.rawQuery(sql, null)
     val returnList = mutableListOf<AgendamentoData>()
     if (cursor.count > 0) {
