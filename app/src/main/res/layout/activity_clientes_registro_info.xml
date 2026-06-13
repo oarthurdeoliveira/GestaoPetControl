@@ -5,13 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/fundo_principal"
     tools:context=".ClientesRegistroInfo">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="@color/white"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -22,7 +21,7 @@
             android:layout_marginTop="28dp"
             android:fontFamily="@font/googlesansflex"
             android:text="Registro Cliente"
-            android:textColor="@color/black"
+            android:textColor="@color/textoTitulo"
             android:textFontWeight="600"
             android:textSize="30sp" />
 
@@ -33,7 +32,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/googlesansflex"
             android:text="Informações"
-            android:textColor="#838383"
+            android:textColor="@color/textoSub"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -73,7 +72,7 @@
                     android:hint="CPF"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
                 <View
@@ -92,7 +91,7 @@
                     android:hint="Nome"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
                 <View
@@ -111,7 +110,7 @@
                     android:hint="Numero telefone"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
             </LinearLayout>
@@ -140,7 +139,7 @@
                     android:hint="Endereço"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
                 <EditText
@@ -153,7 +152,7 @@
                     android:hint="Numero"
                     android:inputType="number"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
             </LinearLayout>
@@ -182,7 +181,7 @@
                     android:hint="Complemento"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
                 <EditText
@@ -195,7 +194,7 @@
                     android:hint="Referencia"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
             </LinearLayout>
@@ -224,7 +223,7 @@
                     android:hint="Cidade"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
                 <EditText
@@ -237,7 +236,7 @@
                     android:hint="Bairro"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
             </LinearLayout>
@@ -265,7 +264,7 @@
                     android:hint="Estado"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
             </LinearLayout>
 

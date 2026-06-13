@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fundo_principal">#111111</color>
+    <color name="nav_fundo">#1c1c1c</color>
+    <color name="icone">#e4e4e4</color>
+    <color name="texto">#e4e4e4</color>
+    <color name="textoTitulo">#e4e4e4</color>
+    <color name="textoSub">#8A8A8A</color>
+    <color name="borda">#3a3a3a</color>
+    <color name="borda_fundo">#272727</color>
+
+    <color name="borda_input">#3a3a3a</color>
+    <color name="borda_input_fundo">#272727</color>
+    <color name="texto_input">#FFFFFFFF</color>
+</resources>

@@ -5,18 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/fundo_principal"
     tools:context=".AgendamentoRegistro">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -28,7 +26,7 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/googlesansflex"
                 android:text="Novo Agendamento"
-                android:textColor="@color/black"
+                android:textColor="@color/textoTitulo"
                 android:textFontWeight="600"
                 android:textSize="30sp" />
 
@@ -40,7 +38,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/googlesansflex"
                 android:text="Informações básicas"
-                android:textColor="#838383"
+                android:textColor="@color/textoSub"
                 android:textFontWeight="400"
                 android:textSize="18sp" />
 
@@ -64,7 +62,7 @@
                     android:hint="CPF"
                     android:inputType="number"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
                 <Button
@@ -90,16 +88,16 @@
                 android:hint="Nome"
                 android:inputType="text"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txtTituloCasa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/googlesansflex"
                 android:text="Pet"
-                android:textColor="@color/black"
+                android:textColor="@color/textoTitulo"
                 android:textFontWeight="400"
                 android:textSize="23dp" />
 
@@ -124,14 +122,14 @@
                 android:enabled="false"
                 android:inputType="text"
                 android:padding="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/texto_input" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/googlesansflex"
                 android:text="Serviço"
-                android:textColor="@color/black"
+                android:textColor="@color/textoTitulo"
                 android:textFontWeight="400"
                 android:textSize="23dp" />
 
@@ -158,7 +156,7 @@
                 android:hint="Data"
                 android:inputType="date"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <EditText
@@ -173,7 +171,7 @@
                 android:hint="Hora"
                 android:inputType="time"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <EditText
@@ -189,7 +187,7 @@
                 android:paddingStart="10dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="80dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <Button

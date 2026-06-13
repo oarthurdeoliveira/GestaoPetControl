@@ -3,12 +3,12 @@
     android:shape="rectangle">
 
     <!-- The background color inside the view (use @android:color/transparent for none) -->
-    <solid android:color="@color/borda_fundo" />
+    <solid android:color="#272727" />
 
     <!-- The border configuration -->
     <stroke
         android:width="2dp"
-        android:color="@color/borda" /> <!-- Red color hex code -->
+        android:color="#3a3a3a" /> <!-- Red color hex code -->
 
     <!-- Optional: Rounded corners -->
     <corners android:radius="20dp" />

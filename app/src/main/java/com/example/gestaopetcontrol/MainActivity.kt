@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val DarkModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
-        val isDarkModeFlag = DarkModeFlags == Configuration.UI_MODE_NIGHT_YES
+
+
 
         //Toast.makeText(this, "${isDarkModeFlag}", Toast.LENGTH_SHORT).show()
 
@@ -109,5 +109,74 @@ class MainActivity : AppCompatActivity() {
         // eu poderia so substituir o . pelo ',', mas isso serve também
         binding.txtRelaRenda.text = String.format(Locale.FRANCE, "Receita prevista: R$ %.2f", receitaPrevista)
 
+    }
+
+
+    private fun aplicarTemaCor() {
+        val DarkModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        val isDarkModeFlag = DarkModeFlags == Configuration.UI_MODE_NIGHT_YES
+
+        if (isDarkModeFlag) {
+            binding.main.setBackgroundColor("#111111".toColorInt())
+
+            val texto_cor = "#e4e4e4".toColorInt()
+            val icone_nav = "#e4e4e4".toColorInt()
+
+            binding.txtTituloCasa.setTextColor(texto_cor)
+
+
+            // Layout Relatorios
+            binding.layoutLVRelatorios.setBackgroundResource(R.drawable.border_dark)
+
+            binding.txtRelaTitulo.setTextColor(texto_cor)
+            binding.txtRelaClientes.setTextColor(texto_cor)
+            binding.txtRelaRenda.setTextColor(texto_cor)
+            binding.txtRelaServicosAtivos.setTextColor(texto_cor)
+            binding.txtRelaPetsCadastrados.setTextColor(texto_cor)
+            binding.txtRelaAgendamentosAtivos.setTextColor(texto_cor)
+
+            // Nav
+            binding.layoutNav.setBackgroundColor("#1c1c1c".toColorInt())
+
+            binding.agendamentoIcon.imageTintList = ColorStateList.valueOf(
+                icone_nav
+            )
+            binding.agendamentoText.setTextColor(texto_cor)
+
+            binding.petIcon.imageTintList = ColorStateList.valueOf(
+                icone_nav
+            )
+            binding.petsText.setTextColor(texto_cor)
+
+            binding.clienteIcon.imageTintList = ColorStateList.valueOf(
+                icone_nav
+            )
+            binding.clienteText.setTextColor(texto_cor)
+
+            binding.servicoIcon.imageTintList = ColorStateList.valueOf(
+                icone_nav
+            )
+            binding.servicoText.setTextColor(texto_cor)
+
+        }else {
+
+            val texto_cor = "#000000".toColorInt()
+
+            binding.main.setBackgroundColor("#ffffff".toColorInt())
+
+            // Layout Relatorios
+            binding.layoutLVRelatorios.setBackgroundResource(R.drawable.border)
+
+            binding.txtRelaTitulo.setTextColor(texto_cor)
+            binding.txtRelaClientes.setTextColor(texto_cor)
+            binding.txtRelaRenda.setTextColor(texto_cor)
+            binding.txtRelaServicosAtivos.setTextColor(texto_cor)
+            binding.txtRelaPetsCadastrados.setTextColor(texto_cor)
+            binding.txtRelaAgendamentosAtivos.setTextColor(texto_cor)
+
+
+            // Nav
+            binding.layoutNav.setBackgroundColor("#D9D9D9".toColorInt())
+        }
     }
 }

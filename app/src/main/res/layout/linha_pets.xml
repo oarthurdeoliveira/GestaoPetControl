@@ -23,7 +23,7 @@
             android:layout_marginRight="150dp"
             android:fontFamily="@font/googlesansflex"
             android:text="Thor"
-            android:textColor="@color/black"
+            android:textColor="@color/texto"
             android:textSize="20sp" />
 
         <TextView

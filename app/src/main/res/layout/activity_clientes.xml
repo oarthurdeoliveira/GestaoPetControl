@@ -5,13 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/fundo_principal"
     tools:context=".Clientes">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +28,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:text="Clientes"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/textoTitulo"
                 android:textFontWeight="600"
                 android:textSize="30sp" />
 
@@ -51,7 +50,7 @@
                     android:hint="CPF Cliente"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
                 <Button
@@ -89,7 +88,7 @@
         android:id="@+id/layout_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#D9D9D9"
+        android:background="@color/nav_fundo"
         android:divider="@drawable/spacer_nav"
         android:dividerPadding="0dp"
         android:gravity="center"
@@ -120,7 +119,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:gravity="center"
                 android:text="Casa"
-                android:textColor="#2A2A2A"
+                android:textColor="@color/texto"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -147,7 +146,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:gravity="center"
                 android:text="Agendamento"
-                android:textColor="#2A2A2A"
+                android:textColor="@color/texto"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -173,7 +172,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:gravity="center"
                 android:text="Pets"
-                android:textColor="#2A2A2A"
+                android:textColor="@color/texto"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -200,7 +199,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:gravity="center"
                 android:text="Clientes"
-                android:textColor="#2A2A2A"
+                android:textColor="@color/texto"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -227,7 +226,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/googlesansflex"
                 android:text="Serviços"
-                android:textColor="#2A2A2A"
+                android:textColor="@color/texto"
                 android:textSize="15sp"
                 android:textStyle="bold" />
         </LinearLayout>

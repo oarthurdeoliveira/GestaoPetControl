@@ -5,13 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/fundo_principal"
     tools:context=".PetsRegistro">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,7 +25,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:text="Cadastro de Pets"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/textoTitulo"
                 android:textFontWeight="600"
                 android:textSize="26sp" />
 
@@ -35,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/googlesansflex"
                 android:text="Tutor/Dono"
-                android:textColor="@color/black"
+                android:textColor="@color/textoTitulo"
                 android:textFontWeight="500"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -65,7 +64,7 @@
                     android:hint="CPF Tutor"
                     android:inputType="number"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/texto_input"
                     android:textColorHint="#9E9E9E" />
 
                 <Button
@@ -92,7 +91,7 @@
                 android:hint="Nome Cliente"
                 android:inputType="text"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <EditText
@@ -103,7 +102,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:hint="Nome do pet"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <EditText
@@ -115,7 +114,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:hint="Espécie: cachorro, gato..."
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <EditText
@@ -127,7 +126,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:hint="Raça"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <EditText
@@ -140,7 +139,7 @@
                 android:hint="Idade"
                 android:inputType="number"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <EditText
@@ -153,7 +152,7 @@
                 android:hint="Peso(kg)"
                 android:inputType="numberDecimal"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <EditText
@@ -165,7 +164,7 @@
                 android:fontFamily="@font/googlesansflex"
                 android:hint="Alergias"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <EditText
@@ -182,7 +181,7 @@
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/texto_input"
                 android:textColorHint="#9E9E9E" />
 
             <Button

@@ -2,4 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fundo_principal">#FFFFFFFF</color>
+    <color name="nav_fundo">#D9D9D9</color>
+    <color name="icone">#FF000000</color>
+    <color name="texto">#000000</color>
+    <color name="textoTitulo">#000000</color>
+    <color name="textoSub">#8A8A8A</color>
+    <color name="borda">#FF000000</color>
+    <color name="borda_fundo">#FFFFFFFF</color>
+
+    <color name="borda_input">#9E9E9E</color>
+    <color name="borda_input_fundo">#FFFFFFFF</color>
+    <color name="texto_input">#FF000000</color>
+
 </resources>

@@ -1,7 +1,9 @@
 package com.example.gestaopetcontrol
 
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -11,6 +13,8 @@ class AgendamentoViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private var itemNomePet = itemView.findViewById<TextView>(R.id.linhaAgen_PetNome)
     private var itemExtraPet = itemView.findViewById<TextView>(R.id.linhaAgen_PetExtra)
     private var itemServicoNome = itemView.findViewById<TextView>(R.id.linhaAgen_ServicoNome)
+
+    private var itemBordaConteudo = itemView.findViewById<LinearLayout>(R.id.borda_conteudo)
 
 
     fun bind(item: AgendamentoData) {

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/googlesansflex"
         android:text="Banho"
-        android:textColor="@color/black"
+        android:textColor="@color/texto"
         android:textSize="20sp" />
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/googlesansflex"
         android:text="R$ 50,00"
-        android:textColor="@color/black"
+        android:textColor="@color/texto"
         android:textSize="16sp" />
 
     <TextView
@@ -32,6 +32,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/googlesansflex"
         android:text="Servico padrao"
-        android:textColor="#8A8A8A"
+        android:textColor="@color/textoSub"
         android:textSize="14sp" />
 </LinearLayout>

@@ -22,7 +22,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/googlesansflex"
             android:text="Roberto Oliveira"
-            android:textColor="@color/black"
+            android:textColor="@color/texto"
             android:textFontWeight="500"
             android:textSize="20sp" />
 
