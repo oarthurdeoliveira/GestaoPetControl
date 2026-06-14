@@ -99,10 +99,7 @@ class Database(context: Context): SQLiteOpenHelper(context, "banco.db", null, 1)
         p1: Int,
         p2: Int
     ) {
-        p0?.execSQL("DROP TABLE IF EXISTS AGENDAMENTOS")
-        p0?.execSQL("DROP TABLE IF EXISTS PETS")
-        p0?.execSQL("DROP TABLE IF EXISTS CLIENTES")
-        onCreate(p0)
+        // So adicionar coisa na pós 1.0.0
     }
 
     private fun adicionarColunaSeNaoExistir(

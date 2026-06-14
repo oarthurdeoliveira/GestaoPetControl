@@ -20,45 +20,13 @@
             android:id="@+id/txtv_titulo6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/googlesansflex"
             android:gravity="center_horizontal"
             android:text="Pets"
             android:textColor="@color/textoTitulo"
             android:textFontWeight="600"
             android:textSize="30sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/edtCpfClientePets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/text_input_materialdesign"
-                android:ems="10"
-                android:fontFamily="@font/googlesansflex"
-                android:hint="CPF"
-                android:inputType="text"
-                android:padding="10dp"
-                android:textColor="@color/texto_input"
-                android:textColorHint="#9E9E9E" />
-
-            <Button
-                android:id="@+id/btn_PesquisarClientePets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/googlesansflex"
-                android:text="Pesquisar Cliente"
-                android:textFontWeight="600" />
-        </LinearLayout>
 
         <TextView
             android:id="@+id/textView3"
@@ -77,6 +45,39 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/linha_agendamentos"
             app:srcCompat="@drawable/linha_agendamentos" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edtCpfClientePets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/text_input_materialdesign"
+                android:ems="10"
+                android:fontFamily="@font/googlesansflex"
+                android:hint="CPF Cliente"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/texto_input"
+                android:textColorHint="#9E9E9E" />
+
+            <Button
+                android:id="@+id/btn_PesquisarClientePets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/googlesansflex"
+                android:text="Pesquisar Cliente"
+                android:textFontWeight="600" />
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"

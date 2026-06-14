@@ -42,11 +42,6 @@ class MainActivity : AppCompatActivity() {
         binding.homeText.setTextColor("#909090".toColorInt())
 
 
-
-
-
-
-
         //Toast.makeText(this, "${isDarkModeFlag}", Toast.LENGTH_SHORT).show()
 
         binding.clienteArea.setOnClickListener {

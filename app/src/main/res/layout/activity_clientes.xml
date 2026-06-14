@@ -32,9 +32,28 @@
                 android:textFontWeight="600"
                 android:textSize="30sp" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/googlesansflex"
+                android:text="Clientes Cadastrados"
+                android:textColor="@color/textoTitulo"
+                android:textFontWeight="500"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/imgV_linhaAgen3"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/linha_agendamentos"
+                app:srcCompat="@drawable/linha_agendamentos" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
 
                 <EditText

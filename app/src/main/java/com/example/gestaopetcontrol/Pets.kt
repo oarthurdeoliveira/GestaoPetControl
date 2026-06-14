@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestaopetcontrol.banco.Database
 import com.example.gestaopetcontrol.banco.apagarCliente
 import com.example.gestaopetcontrol.banco.apagarPet
+import com.example.gestaopetcontrol.banco.apagarPetEmCascata
 import com.example.gestaopetcontrol.banco.selecionarClientes
 import com.example.gestaopetcontrol.banco.selecionarPets
 import com.example.gestaopetcontrol.databinding.ActivityPetsBinding
@@ -146,7 +147,7 @@ class Pets : AppCompatActivity() {
         alerta.setCancelable(false)
         alerta.setPositiveButton("Apagar") {
                 dialog, which ->
-            database.apagarPet(idPet)
+            database.apagarPetEmCascata(idPet)
             val clientesData = database.selecionarPets(sql).map {
                 it.copy(onClick = ::editarPet, onLongClick = ::apagarPet)
             }

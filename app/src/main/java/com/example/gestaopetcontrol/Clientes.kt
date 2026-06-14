@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestaopetcontrol.banco.Database
 import com.example.gestaopetcontrol.banco.apagarCliente
+import com.example.gestaopetcontrol.banco.apagarClienteEmCascata
 import com.example.gestaopetcontrol.banco.pegaCliente
 import com.example.gestaopetcontrol.banco.selecionarClientes
 import com.example.gestaopetcontrol.databinding.ActivityClientesBinding
@@ -126,14 +127,13 @@ class Clientes : AppCompatActivity() {
     }
 
     private fun apagarCliente(idCliente: Int?) {
-        // TODO: SITUAÇÃO SE O DONO FOR DELETADO O QUE VAI ACONTECER COM OS PETS CADASTRADOS?
         val alerta = AlertDialog.Builder(this)
         alerta.setTitle("Apagar Cliente")
         alerta.setMessage("Deseja apagar cliente?")
         alerta.setCancelable(false)
         alerta.setPositiveButton("Apagar") {
             dialog, which ->
-            database.apagarCliente(idCliente)
+            database.apagarClienteEmCascata(idCliente)
             val sql = "SELECT * FROM CLIENTES WHERE APAGADO = 0 ORDER BY NOME"
             val clientesData = database.selecionarClientes(sql).map {
                 it.copy(onClick = ::editarCliente, onLongClick = ::apagarCliente)

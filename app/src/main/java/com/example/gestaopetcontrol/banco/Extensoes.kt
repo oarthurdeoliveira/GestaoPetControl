@@ -334,6 +334,33 @@ fun Database.apagarPet(idPet: Int?): Int {
     return writableDatabase.update("PETS", valores, "ID=${idPet}", null)
 }
 
+fun Database.apagarClienteEmCascata(idCliente: Int?) {
+    val db = writableDatabase
+    val flagApagado = ContentValues().apply { put("APAGADO", 1) }
+
+    db.execSQL("""
+        UPDATE AGENDAMENTOS SET APAGADO = 1
+        WHERE ID_PET IN (
+            SELECT ID FROM PETS WHERE ID_CLIENTE = $idCliente
+        )
+    """)
+
+    db.update("PETS", flagApagado, "ID_CLIENTE = $idCliente", null)
+
+    db.update("CLIENTES", flagApagado, "ID = $idCliente", null)
+}
+
+fun Database.apagarPetEmCascata(idPet: Int?) {
+    val db = writableDatabase
+    val flagApagado = ContentValues().apply { put("APAGADO", 1) }
+
+    db.update("AGENDAMENTOS", flagApagado, "ID_PET = $idPet", null)
+
+    db.update("PETS", flagApagado, "ID = $idPet", null)
+}
+
+
+
 fun Database.atualizarPet(item: PetData): Int {
     val valores = ContentValues().apply {
         put("NOME", item.nome)
