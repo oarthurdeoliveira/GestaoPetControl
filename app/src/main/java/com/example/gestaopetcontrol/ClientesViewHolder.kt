@@ -10,6 +10,8 @@ class ClientesViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private val itemNome = itemView.findViewById<TextView>(R.id.linha_txtNome)
     private val itemQuantidadePets = itemView.findViewById<TextView>(R.id.linha_txtQuantidadePets)
 
+    private val itemExtra = itemView.findViewById<TextView>(R.id.linhaClienteExtra)
+
     private val database: Database = Database(view.context)
 
     fun bind(item: ClientesData){
@@ -20,6 +22,8 @@ class ClientesViewHolder(view: View): RecyclerView.ViewHolder(view) {
         }else {
             itemQuantidadePets.text = "Possui ${quantidade_pet.toString()} Pets"
         }
+
+        itemExtra.text = item.telefone
 
         itemView.setOnClickListener {
             item.onClick?.invoke(item.id)

@@ -15,16 +15,31 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <TextView
-            android:id="@+id/linhaPet_txtNomepet"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="150dp"
-            android:fontFamily="@font/googlesansflex"
-            android:text="Thor"
-            android:textColor="@color/texto"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/linhaPet_txtNomepet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="150dp"
+                android:fontFamily="@font/googlesansflex"
+                android:text="Thor"
+                android:textColor="@color/texto"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/linhaPet_Extra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/googlesansflex"
+                android:text="Cachorro - Yorkshire"
+                android:textColor="@color/textoSub"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/linhaPet_txtNomeCliente"

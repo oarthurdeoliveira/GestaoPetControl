@@ -9,10 +9,13 @@ class PetsViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private val itemNomePet = itemView.findViewById<TextView>(R.id.linhaPet_txtNomepet)
     private val itemNomeCliente = itemView.findViewById<TextView>(R.id.linhaPet_txtNomeCliente)
 
+    private val itemPetExtra = itemView.findViewById<TextView>(R.id.linhaPet_Extra)
+
 
     fun bind(item: PetData) {
         itemNomePet.text = item.nome
         itemNomeCliente.text = "${item.nome_cliente}"
+        itemPetExtra.text = "${item.especie} - ${item.raca}"
 
         itemView.setOnClickListener {
             item.onClick?.invoke(item.id)

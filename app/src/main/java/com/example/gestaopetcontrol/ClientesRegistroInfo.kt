@@ -41,7 +41,7 @@ class ClientesRegistroInfo : AppCompatActivity() {
             Toast.makeText(this, "Novo cliente", Toast.LENGTH_SHORT).show()
         }else {
             val cliente = database.pegaCliente(idCliente)
-            Toast.makeText(this, "{$cliente}", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "{$cliente}", Toast.LENGTH_SHORT).show()
             if (cliente != null) {
                 binding.edtNome.setText(cliente.nome)
                 binding.edtCpf.setText(cliente.cpf)
@@ -50,7 +50,8 @@ class ClientesRegistroInfo : AppCompatActivity() {
                 binding.ednNumero.setText(cliente.numero_residencia.toString())
                 binding.edtComplemento.setText(cliente.complemento)
                 binding.edtReferencia.setText(cliente.referencia)
-                binding.edtCidade.setText(cliente.bairro)
+                binding.edtBairro.setText(cliente.bairro)
+                binding.edtCidade.setText(cliente.cidade)
                 binding.edtEstado.setText(cliente.estado)
 
                 binding.btnFinalizar.text = "Alterar"
@@ -87,7 +88,7 @@ class ClientesRegistroInfo : AppCompatActivity() {
         // !! garante pro compilador que a variavel não é nula
         if(idCliente!! >= 0) {
             // Quando estou alterando um existente
-            Toast.makeText(this, "Adicionando cliente: {$nome}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Adicionando cliente: $nome", Toast.LENGTH_SHORT).show()
             cliente = ClientesData(nome, cpf, telefone, endereco, numero_residencia, complemento, referencia, cidade, bairro, estado, 0, idCliente)
             val atualizado = database.atualizarCliente(cliente)
             finish()
@@ -98,7 +99,7 @@ class ClientesRegistroInfo : AppCompatActivity() {
             if(idclienteRetornardo == -1L) {
                 Toast.makeText(this, "Error ao inserir aluno", Toast.LENGTH_SHORT).show()
             }else {
-                Toast.makeText(this, "{$nome} cadastrado com sucesso", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "$nome cadastrado com sucesso", Toast.LENGTH_SHORT).show()
             }
             finish()
         }

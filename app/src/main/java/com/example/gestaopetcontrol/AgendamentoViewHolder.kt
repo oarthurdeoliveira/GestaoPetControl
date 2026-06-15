@@ -5,8 +5,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
+import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import java.util.Date
 
 class AgendamentoViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private var itemHora = itemView.findViewById<TextView>(R.id.linhaAgen_txtHora)
@@ -19,7 +21,12 @@ class AgendamentoViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     fun bind(item: AgendamentoData) {
         val hora_formatada = LocalTime.parse(item.hora)
-        itemHora.text = hora_formatada.format(DateTimeFormatter.ofPattern("HH:mm"))
+        val formatterEntrada = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val formatterSaida   = DateTimeFormatter.ofPattern("dd/MM/yy")
+        val data = LocalDate.parse(item.data, formatterEntrada)
+
+        val dataformatada = data.format(formatterSaida)
+        itemHora.text = "${hora_formatada.format(DateTimeFormatter.ofPattern("HH:mm"))} - ${dataformatada} "
         itemNomePet.text = item.nome_pet
         itemServicoNome.text = item.nome_servico
         val servico = item.nome_servico ?: "Servico nao informado"
