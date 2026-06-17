@@ -43,7 +43,7 @@ class PetsRegistro : AppCompatActivity() {
             Toast.makeText(this, "Novo Pet", Toast.LENGTH_SHORT).show()
         }else{
             // editar pet existente
-            Toast.makeText(this, "Pet existente", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Pet existente", Toast.LENGTH_SHORT).show()
             val pet = database.pegarPet(idPet)
 
             if (pet != null) {
@@ -72,7 +72,7 @@ class PetsRegistro : AppCompatActivity() {
             if (data_cliente != null) {
                 binding.edtNomeClientePets.setText(data_cliente.nome)
                 id_cliente = data_cliente.id
-                Toast.makeText(this, "{$id_cliente}", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "{$id_cliente}", Toast.LENGTH_SHORT).show()
                 binding.btnSalvarPet.isEnabled = true
                 binding.btnSalvarPet.isActivated = true
             } else {
@@ -113,7 +113,8 @@ class PetsRegistro : AppCompatActivity() {
             // Editando um existente
             pet = PetData(nome_pet, especie, raca, idade, peso, alergias, observacoes, 0, id_cliente, null, null, idPet)
             val atualizar = database.atualizarPet(pet)
-            Toast.makeText(this, "${atualizar}", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "${atualizar}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Alterando pet: $nome_pet", Toast.LENGTH_SHORT).show()
             finish()
         } else {
             // Criando um novo

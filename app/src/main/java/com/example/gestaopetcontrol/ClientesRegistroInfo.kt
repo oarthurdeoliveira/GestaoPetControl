@@ -88,7 +88,7 @@ class ClientesRegistroInfo : AppCompatActivity() {
         // !! garante pro compilador que a variavel não é nula
         if(idCliente!! >= 0) {
             // Quando estou alterando um existente
-            Toast.makeText(this, "Adicionando cliente: $nome", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Alterando cliente: $nome", Toast.LENGTH_SHORT).show()
             cliente = ClientesData(nome, cpf, telefone, endereco, numero_residencia, complemento, referencia, cidade, bairro, estado, 0, idCliente)
             val atualizado = database.atualizarCliente(cliente)
             finish()

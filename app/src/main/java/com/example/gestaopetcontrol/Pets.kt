@@ -128,7 +128,7 @@ class Pets : AppCompatActivity() {
     }
 
     private fun editarPet(idPet: Int?) {
-        Toast.makeText(this, "${idPet}", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "${idPet}", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, PetsRegistro::class.java)
         intent.putExtra("ID_PET", idPet)
         startActivity(intent)
